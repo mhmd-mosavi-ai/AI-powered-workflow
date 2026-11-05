@@ -1,0 +1,960 @@
+{
+  "name": "Research Engine - Full Report with Independent Review",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "chat_id"
+            },
+            {
+              "name": "research_id"
+            },
+            {
+              "name": "brief_json"
+            }
+          ]
+        }
+      },
+      "id": "81440f61-b3a2-4bed-9de7-9b189f919c49",
+      "name": "Research Request Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -5488,
+        1024
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "brief",
+              "value": "={{ JSON.parse($json.brief_json) }}",
+              "type": "object"
+            },
+            {
+              "id": "48f14932-7709-4fc9-81a3-2a6ca178a80d",
+              "name": "course_outline",
+              "value": "\nبخش ۱ | اصلاً یادگیری چیست؟\n۱. یادگیری چیست و چیست نیست؟\nیادگیری یعنی چه؟\nچه چیزی یادگیری محسوب نمی‌شود؟\nتفاوت یادگیری، مطالعه، حفظ کردن، فهمیدن و مهارت\nیادگیری چگونه می‌تواند اتفاق بیفتد؟\nاز کجا بفهمیم یادگیری اتفاق افتاده؟\n۲. انواع یادگیری\nیادگیری شناختی\nیادگیری مهارتی\nیادگیری رفتاری\nیادگیری اجتماعی\nیادگیری از تجربه\nیادگیری آگاهانه و ناآگاهانه\nآیا هر چیزی که یاد می‌گیریم لزوماً مفید است؟\n۳. چرا باید «یادگیریِ یادگیری» را یاد بگیریم؟\nچرا دانستن یک موضوع با بلد بودنِ یاد گرفتن فرق دارد؟\nاین مهارت کجای زندگی به درد من می‌خورد؟\nمدرسه، دانشگاه، کار، مهارت، روابط و زندگی واقعی\nچرا در دنیای امروز فقط «اطلاعات داشتن» کافی نیست؟\nاگر بلد باشم یاد بگیرم، چه چیزهایی برایم ممکن می‌شود؟\n۴. داستان‌های یادگیری\nاین بخش را من فصل تئوری نمی‌کنم؛ به‌عنوان نخ داستانی دوره استفاده می‌کنم.\n\nمثلاً:\n\nهلن کلر ← فهمیدن به‌جای حفظ کردن\nفارادی ← یادگیری خودراهبر\nبرادران رایت ← یادگیری از خطا و آزمایش\nرامانوجان ← خودآموزی و اهمیت بازخورد\nادیسون ← یادگیری از انجام دادن\nبخش ۲ | مغز من چطور یاد می‌گیرد؟\n۵. مغز و نوروسایکولوژی یادگیری\nمغز در یادگیری چه نقشی دارد؟\nتوجه\nادراک\nحافظه\nحافظه کاری و بلندمدت\nدانش قبلی\nارتباط دادن اطلاعات جدید با دانسته‌های قبلی\nهیجان\nاسترس\nخواب و یادگیری\nفراموشی و ماندگاری\n۶. چرا بعضی وقت‌ها فکر می‌کنم یاد گرفته‌ام؟\nآشنایی با مطلب در برابر یادگیری واقعی\nتوهم یادگیری\nدوباره‌خوانی\nهایلایت\nتماشای ویدئو\nحس تسلط\nچگونه یادگیری خودمان را ارزیابی کنیم؟\nاینجا دقیقاً جایی است که Retrieval، Spacing و سایر یافته‌های علم یادگیریوارد داستان می‌شوند، نه به‌صورت فهرست تکنیک.\n\nبخش ۳ | من به‌عنوان یادگیرنده\n۷. وضعیت فعلی من در یادگیری\nالان چطور یاد می‌گیرم؟\nچه چیزهایی برایم خوب پیش می‌رود؟\nکجاها گیر می‌کنم؟\nالگوی معمول من هنگام یادگیری چیست؟\n۸. چه چیزهایی یادگیری من را خراب می‌کنند؟\nاین‌ها را به‌جای ۹ فصل جدا، یک فصل بزرگ و کاربردی می‌کنیم:\n\nنقاط قوت و ضعف\nعادت‌های فعلی\nحواس‌پرتی\nتمرکز\nاهمال‌کاری\nترس از اشتباه\nکمال‌گرایی\nباورهای من درباره خودم و یادگیری\nافسانه سبک‌های یادگیری\n۹. چطور در یادگیری استمرار داشته باشم؟\nشروع کردن\nادامه دادن\nوقتی انگیزه ندارم چه کنم؟\nساختن عادت یادگیری\nاصطکاک و محیط\nمدیریت حواس‌پرتی\nافت‌وخیز انگیزه\nچگونه یادگیری را رها نکنم؟\nبخش ۴ | یادگیری را طراحی کنم\n۱۰. مقصد یادگیری من چیست؟\nدقیقاً چه می‌خواهم یاد بگیرم؟\nچرا می‌خواهم یاد بگیرم؟\nخروجی مورد انتظار چیست؟\nاز کجا بفهمم به هدف رسیده‌ام؟\nنقطه شروع من کجاست؟\n۱۱. موضوع بزرگ را به مسیر تبدیل کنم\nموضوع را بشکنم\nاجزای اصلی را پیدا کنم\nپیش‌نیازها را مشخص کنم\nترتیب یادگیری را مشخص کنم\nاز کجا شروع کنم؟\nچه چیزی را فعلاً لازم نیست یاد بگیرم؟\nبخش ۵ | از اطلاعات به یادگیری\n۱۲. منبع درست را پیدا کنم\nانواع منابع\nکتاب\nمقاله\nویدئو\nدوره\nمعلم/منتور\nمنابع آنلاین\nاعتبار منبع\nکیفیت شواهد\nانتخاب منبع متناسب با هدف\nمقایسه منابع\nتشخیص ادعای ضعیف\nجلوگیری از مصرف بی‌پایان محتوا\n۱۳. فعالانه یاد بگیرم\nسؤال مرکزی: «چطور اطلاعات را از بیرون به دانشی در ذهن خودم تبدیل کنم؟»\n\nیادگیری منفعل در برابر فعال\nسؤال پرسیدن\nتوضیح دادن با زبان خود\nارتباط دادن مطالب\nمثال ساختن\nمقایسه و دسته‌بندی\nیادداشت‌برداری مؤثر\nساختن معنا\nبخش ۶ | از دانستن به توانستن\n۱۴. تمرین کنم\nسؤال مرکزی: «چطور از دانستن به توانستن برسم؟»\n\nدانش در برابر مهارت\nچرا فهمیدن کافی نیست؟\nتمرین هدفمند\nتمرین از ساده به دشوار\nتمرین روی نقاط ضعف\nتمرین در شرایط واقعی\nتکرار + اصلاح + تکرار\nچه زمانی تمرین کافی است؟\n۱۵. خودم را محک بزنم\nسؤال مرکزی: «چطور بدون فریب دادن خودم بفهمم واقعاً بلدم؟»\n\nبازیابی از حافظه\nخودآزمایی\nپرسش از خود\nتست گرفتن\nتوضیح دادن بدون نگاه کردن\nاستفاده از خطاهای آزمون\nارزیابی واقعی عملکرد\nبخش ۷ | وقتی یادگیری جواب نمی‌دهد چه کنم؟\n۱۶. بازخورد بگیرم\nبازخورد چیست؟\nبازخورد خوب چه ویژگی‌ای دارد؟\nاز چه کسی بازخورد بگیرم؟\nچه زمانی بازخورد بگیرم؟\nچطور بازخورد را به اصلاح تبدیل کنم؟\n۱۷. از اشتباه یاد بگیرم\nچرا اشتباه می‌کنم؟\nاشتباه چه اطلاعاتی به من می‌دهد؟\nتحلیل خطا\nپیدا کردن علت اشتباه\nاصلاح روش\nتلاش دوباره\nفرق «شکست» با «داده‌ای برای اصلاح»\nبخش ۸ | یادگیری را وارد زندگی کنم\n۱۸. یادگیری را منتقل کنم\nچیزی را یاد گرفته‌ام؛ آیا می‌توانم در موقعیت دیگری استفاده کنم؟\nانتقال یادگیری\nاستفاده در موقعیت واقعی\nحل مسئله\nتغییر شرایط و زمینه\nتبدیل دانستن به عملکرد\n۱۹. سیستم یادگیری شخصی من\nدر اینجا دیگر مفهوم جدید زیادی نداریم.\n\nهمه چیز را کنار هم می‌گذاریم:\n\nمن کجا هستم؟\n↓\nچه می‌خواهم؟\n↓\nموضوع چیست؟\n↓\nمسیرش چیست؟\n↓\nمنبع چیست؟\n↓\n\nچطور فعال یاد بگیرم؟\n↓\nچطور تمرین کنم؟\n↓\nچطور خودم را محک بزنم؟\n↓\nچطور بازخورد بگیرم؟\n↓\nکجا اشتباه کردم؟\n↓\nچه چیزی را اصلاح کنم؟\n↓\nچطور در زندگی استفاده کنم؟",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "4112a429-1c94-434a-a773-c92d8d41a792",
+      "name": "Prepare Research Context",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -5312,
+        1024
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini",
+          "cachedResultUrl": ""
+        },
+        "builtInTools": {
+          "webSearch": {
+            "searchContextSize": "medium"
+          }
+        },
+        "options": {
+          "maxTokens": 16000,
+          "temperature": 0.3
+        }
+      },
+      "id": "d8ba7ea7-db53-4baf-b9d4-ed399f32c317",
+      "name": "Researcher LLM (Web Search)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -4992,
+        1216
+      ]
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"topic_title\": \"عنوان موضوع تحقیق\",\n  \"executive_summary\": {\n    \"text\": \"جمع‌بندی علمی تحقیق\",\n    \"source_ids\": [\n      \"S1\"\n    ]\n  },\n  \"scope_and_definitions\": [\n    {\n      \"term\": \"اصطلاح اصلی\",\n      \"definition\": \"تعریف دقیق مفهوم\",\n      \"importance\": \"اهمیت برای سؤال اصلی\",\n      \"source_ids\": [\n        \"S1\"\n      ]\n    },\n    {\n      \"term\": \"مفهوم مرتبط دوم\",\n      \"definition\": \"تعریف مستند مفهوم دوم\",\n      \"importance\": \"اهمیت این مفهوم برای سؤال اصلی\",\n      \"source_ids\": [\n        \"S2\"\n      ]\n    }\n  ],\n  \"theoretical_framework\": [\n    {\n      \"concept\": \"نام نظریه یا مدل\",\n      \"explanation\": \"توضیح دقیق نظریه\",\n      \"relevance\": \"ارتباط با سؤال تحقیق\",\n      \"source_ids\": [\n        \"S1\"\n      ]\n    },\n    {\n      \"concept\": \"چارچوب نظری مرتبط دوم\",\n      \"explanation\": \"توضیح مدل و منطق آن\",\n      \"relevance\": \"ارتباط با سؤال تحقیق\",\n      \"source_ids\": [\n        \"S2\"\n      ]\n    }\n  ],\n  \"key_findings\": [\n    {\n      \"finding\": \"ادعای اصلی یافته\",\n      \"explanation\": \"توضیح نتیجه و معنای آن\",\n      \"source_ids\": [\n        \"S1\"\n      ],\n      \"evidence_strength\": \"Moderate\",\n      \"limitations\": \"محدودیت اصلی\"\n    },\n    {\n      \"finding\": \"یافته علمی مستقل دوم، در صورت پشتیبانی شواهد\",\n      \"explanation\": \"شرح دقیق یافته، معنای آن و شرایط اعتبار\",\n      \"source_ids\": [\n        \"S2\"\n      ],\n      \"evidence_strength\": \"Moderate\",\n      \"limitations\": \"محدودیت اصلی\"\n    }\n  ],\n  \"course_mapping\": {\n    \"module\": \"عنوان بخش دوره\",\n    \"lesson\": \"شماره و عنوان درس\",\n    \"section\": \"عنوان زیر‌بخش\",\n    \"angle\": \"نحوه استفاده آموزشی\"\n  },\n  \"main_sources\": [\n    {\n      \"source_id\": \"S1\",\n      \"name\": \"عنوان واقعی منبع\",\n      \"author_year\": \"نویسنده، سال\",\n      \"source_type\": \"Peer-reviewed article\",\n      \"tier\": \"A\",\n      \"evidence_strength\": \"Moderate\",\n      \"study_type\": \"نوع طراحی پژوهش\",\n      \"population_context\": \"جامعه یا زمینه مورد مطالعه\",\n      \"method_summary\": \"خلاصه روش پژوهش\",\n      \"main_result\": \"نتیجه اصلی منبع\",\n      \"limitations\": \"محدودیت‌های مهم منبع\",\n      \"note\": \"ارتباط منبع با موضوع\",\n      \"translation\": \"ترجمه فارسی عنوان\",\n      \"link\": \"\"\n    },\n    {\n      \"source_id\": \"S2\",\n      \"name\": \"عنوان واقعی منبع دوم\",\n      \"author_year\": \"نویسنده، سال\",\n      \"source_type\": \"نوع واقعی منبع\",\n      \"tier\": \"A\",\n      \"evidence_strength\": \"Moderate\",\n      \"study_type\": \"نوع طراحی پژوهش\",\n      \"population_context\": \"جامعه یا زمینه مورد مطالعه\",\n      \"method_summary\": \"خلاصه روش پژوهش\",\n      \"main_result\": \"نتیجه اصلی منبع\",\n      \"limitations\": \"محدودیت‌های مهم منبع\",\n      \"note\": \"ارتباط منبع با موضوع\",\n      \"translation\": \"ترجمه فارسی عنوان\",\n      \"link\": \"\"\n    }\n  ],\n  \"evidence_review\": [\n    {\n      \"source_id\": \"S1\",\n      \"methodological_assessment\": \"ارزیابی روش‌شناسی\",\n      \"strengths\": \"نقاط قوت\",\n      \"limitations\": \"محدودیت‌ها\",\n      \"relevance\": \"ارتباط با سؤال تحقیق\"\n    },\n    {\n      \"source_id\": \"S2\",\n      \"methodological_assessment\": \"ارزیابی روش‌شناختی مستقل\",\n      \"strengths\": \"نقاط قوت\",\n      \"limitations\": \"محدودیت‌ها\",\n      \"relevance\": \"ارتباط با سؤال تحقیق\"\n    }\n  ],\n  \"contradictions\": [\n    {\n      \"claim_or_issue\": \"موضوع مورد اختلاف\",\n      \"description\": \"شرح دقیق نتایج متفاوت\",\n      \"source_ids\": [\n        \"S1\",\n        \"S2\"\n      ],\n      \"interpretation\": \"توضیح محتاطانه اختلاف\"\n    }\n  ],\n  \"examples\": [\n    {\n      \"person_event\": \"نام فرد یا رویداد\",\n      \"description\": \"شرح مثال\",\n      \"source\": \"\",\n      \"source_type\": \"نوع منبع مستند\",\n      \"documentation_level\": \"Medium\",\n      \"relevance\": \"ارتباط مثال با موضوع\"\n    },\n    {\n      \"person_event\": \"مثال مستند دوم\",\n      \"description\": \"شرح مثال مستند، در صورت وجود\",\n      \"source\": \"\",\n      \"source_type\": \"نوع منبع مستند\",\n      \"documentation_level\": \"Medium\",\n      \"relevance\": \"ارتباط مثال با موضوع\"\n    }\n  ],\n  \"interdisciplinary\": [\n    {\n      \"domain\": \"حوزه علمی مرتبط\",\n      \"fact\": \"یافته مرتبط\",\n      \"source\": \"\",\n      \"relevance\": \"ارتباط با سؤال اصلی\",\n      \"credibility\": \"Moderate\",\n      \"limitation\": \"محدودیت تفسیر\"\n    },\n    {\n      \"domain\": \"حوزه علمی مرتبط دوم\",\n      \"fact\": \"یافته بین‌رشته‌ای مرتبط، در صورت وجود\",\n      \"source\": \"\",\n      \"relevance\": \"ارتباط با سؤال اصلی\",\n      \"credibility\": \"Moderate\",\n      \"limitation\": \"محدودیت تفسیر\"\n    }\n  ],\n  \"research_gaps\": [\n    {\n      \"gap\": \"شکاف پژوهشی\",\n      \"why_it_matters\": \"اهمیت این شکاف\",\n      \"source_ids\": [\n        \"S1\"\n      ]\n    },\n    {\n      \"gap\": \"شکاف پژوهشی دیگر، در صورت وجود\",\n      \"why_it_matters\": \"اهمیت این شکاف\",\n      \"source_ids\": [\n        \"S2\"\n      ]\n    }\n  ],\n  \"glossary\": [\n    {\n      \"term\": \"اصطلاح تخصصی\",\n      \"definition\": \"تعریف روشن و دقیق\",\n      \"source_ids\": [\n        \"S1\"\n      ]\n    },\n    {\n      \"term\": \"اصطلاح تخصصی دوم\",\n      \"definition\": \"تعریف روشن و دقیق\",\n      \"source_ids\": [\n        \"S2\"\n      ]\n    }\n  ],\n  \"content_suggestions\": [\n    {\n      \"title\": \"عنوان پیشنهاد\",\n      \"format\": \"تمرین یا محتوای آموزشی\",\n      \"idea\": \"شرح دقیق ایده اجرایی\",\n      \"scientific_basis_source_ids\": [\n        \"S1\"\n      ],\n      \"caution\": \"هشدار یا محدودیت ضروری\"\n    },\n    {\n      \"title\": \"پیشنهاد محتوایی دوم\",\n      \"format\": \"قالب محتوایی\",\n      \"idea\": \"شرح ایده اجرایی\",\n      \"scientific_basis_source_ids\": [\n        \"S2\"\n      ],\n      \"caution\": \"هشدار یا محدودیت ضروری\"\n    }\n  ],\n  \"research_limitations\": [\n    \"محدودیت واقعی تحقیق\",\n    \"محدودیت دیگر تحقیق، در صورت وجود\"\n  ]\n}"
+      },
+      "id": "091ccfa5-12fc-4e7e-b69c-a03f0dfebf64",
+      "name": "Research Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -4848,
+        1216
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================================\n// Evidence Gate - نسخه مبتنی بر تأیید بازبین\n// محتوای گزارش فقط از خروجی پژوهشگر اصلی گرفته می‌شود.\n// ============================================================\n\nfunction parseObject(value) {\n  if (value && typeof value === 'object' && !Array.isArray(value)) {\n    return value;\n  }\n\n  if (typeof value !== 'string') return {};\n\n  try {\n    const parsed = JSON.parse(\n      value.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```$/i, '').trim()\n    );\n\n    return parsed && typeof parsed === 'object' && !Array.isArray(parsed)\n      ? parsed\n      : {};\n  } catch {\n    return {};\n  }\n}\n\nfunction arr(value) {\n  return Array.isArray(value) ? value : [];\n}\n\nfunction str(value) {\n  return value == null ? '' : String(value).trim();\n}\n\nconst decision = $input.first().json || {};\n\nif (decision.route !== 'approved') {\n  throw new Error(\n    'گزارش بدون عبور از مسیر approved نباید وارد Evidence Gate شود.'\n  );\n}\n\nconst report = parseObject(decision.final_report);\n\nif (!str(report.topic_title)) {\n  throw new Error('گزارش نهایی پژوهشگر اصلی فاقد عنوان است.');\n}\n\nconst sources = arr(report.main_sources);\nconst examples = arr(report.examples);\nconst interdisciplinary = arr(report.interdisciplinary);\n\nconst researchId = str(decision.research_id);\n\nconst isTechnicalTest =\n  str(report.topic_title) === 'تست اتصال';\n\n// ------------------------------------------------------------\n// آماده‌سازی ردیف‌های شواهد برای Data Table فعلی\n// ------------------------------------------------------------\n\nconst evidenceFlat = [];\n\nfor (const source of sources) {\n  evidenceFlat.push({\n    research_id: researchId,\n    kind: 'source',\n    title: str(source.name),\n    author_year: str(source.author_year),\n    source_type: str(source.source_type),\n    tier: str(source.tier),\n    evidence_strength: str(source.evidence_strength),\n\n    note: [\n      str(source.main_result),\n      str(source.note)\n    ].filter(Boolean).join(' | '),\n\n    link: str(source.link)\n  });\n}\n\nfor (const example of examples) {\n  evidenceFlat.push({\n    research_id: researchId,\n    kind: 'example',\n    title: str(example.person_event),\n    author_year: '',\n    source_type: str(example.source_type),\n    tier: '',\n    evidence_strength: str(example.documentation_level),\n    note: str(example.relevance),\n    link: str(example.source)\n  });\n}\n\nfor (const item of interdisciplinary) {\n  evidenceFlat.push({\n    research_id: researchId,\n    kind: 'interdisciplinary',\n    title: str(item.domain),\n    author_year: '',\n    source_type: '',\n    tier: '',\n    evidence_strength: str(item.credibility),\n    note: str(item.fact),\n    link: str(item.source)\n  });\n}\n\n// ------------------------------------------------------------\n// خروجی\n// فیلدهای علمی از گزارش پژوهشگر اصلی حفظ می‌شوند.\n// ------------------------------------------------------------\n\nreturn [{\n  json: {\n    ...report,\n\n    chat_id: decision.chat_id,\n    research_id: researchId,\n\n    review_status: isTechnicalTest ? 'test' : 'pass',\n    is_technical_test: isTechnicalTest,\n\n    verified_source_count: Number(\n      decision.verified_source_count ?? sources.length\n    ),\n\n    dropped_sources_count: 0,\n    dropped_claims_count: 0,\n\n    quality_warnings: arr(decision.quality_warnings),\n\n    verification_notice: str(decision.verification_notice),\n\n    evidence_flat: evidenceFlat\n  }\n}];"
+      },
+      "id": "59c6743d-d931-42de-9d78-050d6e4c276a",
+      "name": "Apply Evidence Gate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3744,
+        992
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================================\n// قالب‌بندی گزارش پژوهشگر اصلی + پیوست وضعیت بازبینی\n// گزارش علمی در هر دو حالت از ایجنت اول گرفته می‌شود.\n// در حالت fail گزارش حذف نمی‌شود؛ موارد تأییدنشده جداگانه مشخص می‌شوند.\n// ============================================================\n\nconst d = $input.first().json || {};\nconst lines = [];\n\nfunction str(value) {\n  return value === null || value === undefined ? '' : String(value).trim();\n}\nfunction arr(value) { return Array.isArray(value) ? value : []; }\nfunction obj(value) { return value && typeof value === 'object' && !Array.isArray(value) ? value : {}; }\nfunction refsText(value) {\n  const refs = arr(value).map(str).filter(Boolean);\n  return refs.length ? ` [منابع: ${refs.join(', ')}]` : '';\n}\nfunction addTitle(title) { lines.push(''); lines.push(title); }\nfunction addBullet(value) { if (str(value)) lines.push('• ' + str(value)); }\nfunction addUrl(value) { if (str(value)) lines.push('   لینک: ' + str(value)); }\nfunction pct(value) {\n  if (value === null || value === undefined || value === '') return null;\n  const n = Number(value);\n  return Number.isFinite(n) && n >= 0 && n <= 100 ? Math.round(n) : null;\n}\n\nconst isFail = str(d.review_status).toLowerCase() === 'fail';\nconst isTest = d.review_status === 'test' || d.is_technical_test === true;\nconst issues = arr(d.unapproved_topics);\n\nfunction issueForPath(path) {\n  return issues.find(item => str(item.claim_path) === path) || null;\n}\nfunction issueForSource(sourceId) {\n  return issues.find(item => str(item.source_id).toUpperCase() === str(sourceId).toUpperCase()) || null;\n}\nfunction marker(issue) {\n  if (!issue) return '';\n  return ' ⚠️ [نیازمند بررسی]';\n}\nfunction shortText(value, max = 150) {\n  const s = str(value).replace(/\\s+/g, ' ');\n  if (s.length <= max) return s;\n  return s.slice(0, max - 1).trimEnd() + '…';\n}\nfunction showIssueDetails(item, index) {\n  const confidence = pct(item.confidence_percent);\n  const title = str(item.topic) || str(item.claim_path) || 'مورد نیازمند بررسی';\n  const status = str(item.status) || 'تأیید نهایی نشده';\n  const confText = confidence === null ? 'اطمینان: اعلام نشده' : `اطمینان بازبین: ${confidence}%`;\n  lines.push(`${index + 1}. ${shortText(title, 90)} | ${status} | ${confText}`);\n  if (str(item.reason)) lines.push('   ' + shortText(item.reason, 150));\n}\n\nlines.push('📌 گزارش تحقیق: ' + (str(d.topic_title) || '-'));\n\nif (isTest) {\n  lines.push('');\n  lines.push('✅ اتصال برقرار است');\n  lines.push('این پیام صرفاً نتیجه تست فنی است و شامل تحقیق علمی نیست.');\n} else {\n  if (isFail) {\n    lines.push('');\n    lines.push('⚠️ بازبینی: پس از یک دور اصلاح، بعضی بخش‌ها همچنان نیازمند بررسی‌اند.');\n    lines.push('ابتدا گزارش کامل پژوهش را می‌بینی؛ نمای کوتاه اعتبارسنجی در انتهای پیام آمده است. بخش‌های علامت‌گذاری‌شده تأیید نهایی نشده‌اند.');\n  }\n\n  // ----------------------------------------------------------\n  // جمع‌بندی\n  // ----------------------------------------------------------\n  const summary = obj(d.executive_summary);\n  if (str(summary.text)) {\n    addTitle('🧭 جمع‌بندی کلی' + (issueForPath('executive_summary') ? ' ⚠️' : ''));\n    lines.push(str(summary.text) + refsText(summary.source_ids) + marker(issueForPath('executive_summary')));\n  }\n\n  // ----------------------------------------------------------\n  // تعاریف و مفاهیم\n  // ----------------------------------------------------------\n  const definitions = arr(d.scope_and_definitions);\n  if (definitions.length) {\n    addTitle('📖 تعاریف و مفاهیم پایه');\n    definitions.forEach((item, index) => {\n      const issue = issueForPath(`scope_and_definitions[${index}]`);\n      lines.push('• ' + str(item.term) + ': ' + str(item.definition) + refsText(item.source_ids) + marker(issue));\n      if (str(item.importance)) lines.push('   اهمیت: ' + str(item.importance));\n    });\n  }\n\n  // ----------------------------------------------------------\n  // چارچوب نظری\n  // ----------------------------------------------------------\n  const theories = arr(d.theoretical_framework);\n  if (theories.length) {\n    addTitle('🧠 چارچوب نظری');\n    theories.forEach((item, index) => {\n      const issue = issueForPath(`theoretical_framework[${index}]`);\n      lines.push('• ' + str(item.concept) + ': ' + str(item.explanation) + refsText(item.source_ids) + marker(issue));\n      if (str(item.relevance)) lines.push('   ارتباط با سؤال: ' + str(item.relevance));\n    });\n  }\n\n  // ----------------------------------------------------------\n  // یافته‌های اصلی\n  // ----------------------------------------------------------\n  const findings = arr(d.key_findings);\n  if (findings.length) {\n    addTitle('🔑 یافته‌های اصلی');\n    findings.forEach((item, index) => {\n      const issue = issueForPath(`key_findings[${index}]`);\n      lines.push(`${index + 1}. ${str(item.finding)}` + refsText(item.source_ids) + marker(issue));\n      if (str(item.explanation)) lines.push('   توضیح: ' + str(item.explanation));\n      if (str(item.evidence_strength)) lines.push('   قدرت شواهد گزارش‌شده: ' + str(item.evidence_strength));\n      if (str(item.limitations)) lines.push('   محدودیت: ' + str(item.limitations));\n      lines.push('');\n    });\n  } else {\n    addTitle('🔑 یافته‌های اصلی');\n    lines.push('پژوهشگر اصلی در این گزارش یافته اصلی ثبت نکرده است.');\n  }\n\n  // ----------------------------------------------------------\n  // نگاشت به دوره\n  // ----------------------------------------------------------\n  const mapping = obj(d.course_mapping);\n  if (str(mapping.module) || str(mapping.lesson) || str(mapping.angle)) {\n    addTitle('🎯 کاربرد در دوره');\n    lines.push('بخش: ' + (str(mapping.module) || 'مشخص نشده'));\n    lines.push('درس: ' + (str(mapping.lesson) || 'مشخص نشده'));\n    lines.push('زیر‌بخش: ' + (str(mapping.section) || 'مشخص نشده'));\n    if (str(mapping.angle)) lines.push('زاویه آموزشی: ' + str(mapping.angle));\n  }\n\n  // ----------------------------------------------------------\n  // منابع اصلی\n  // ----------------------------------------------------------\n  const sources = arr(d.main_sources);\n  addTitle('📚 منابع اصلیِ درج‌شده در گزارش پژوهشگر');\n  if (!sources.length) {\n    lines.push('پژوهشگر اصلی منبعی در فهرست main_sources ارائه نکرده است.');\n  } else {\n    sources.forEach((source, index) => {\n      const issue = issueForSource(source.source_id);\n      lines.push(`${index + 1}. ${str(source.name) || 'عنوان درج نشده'}${str(source.source_id) ? ' [' + str(source.source_id) + ']' : ''}` + marker(issue));\n      if (str(source.author_year)) lines.push('   نویسنده/سال: ' + str(source.author_year));\n      if (str(source.source_type)) lines.push('   نوع منبع: ' + str(source.source_type));\n      if (str(source.tier)) lines.push('   طبقه منبع گزارش‌شده: ' + str(source.tier));\n      if (str(source.study_type)) lines.push('   نوع پژوهش: ' + str(source.study_type));\n      if (str(source.population_context)) lines.push('   جامعه/زمینه: ' + str(source.population_context));\n      if (str(source.method_summary)) lines.push('   روش: ' + str(source.method_summary));\n      if (str(source.main_result)) lines.push('   نتیجه گزارش‌شده: ' + str(source.main_result));\n      if (str(source.limitations)) lines.push('   محدودیت‌ها: ' + str(source.limitations));\n      addUrl(source.link);\n      lines.push('');\n    });\n  }\n\n  // ----------------------------------------------------------\n  // بازبینی روش‌شناسی\n  // ----------------------------------------------------------\n  const evidenceReviews = arr(d.evidence_review);\n  if (evidenceReviews.length) {\n    addTitle('🔬 ارزیابی روش‌شناختی');\n    evidenceReviews.forEach((item, index) => {\n      const issue = issueForPath(`evidence_review[${index}]`);\n      lines.push('منبع: ' + str(item.source_id) + marker(issue));\n      if (str(item.methodological_assessment)) lines.push('   ارزیابی: ' + str(item.methodological_assessment));\n      if (str(item.strengths)) lines.push('   نقاط قوت: ' + str(item.strengths));\n      if (str(item.limitations)) lines.push('   محدودیت‌ها: ' + str(item.limitations));\n      if (str(item.relevance)) lines.push('   ارتباط: ' + str(item.relevance));\n    });\n  }\n\n  // ----------------------------------------------------------\n  // اختلاف‌ها\n  // ----------------------------------------------------------\n  const contradictions = arr(d.contradictions);\n  if (contradictions.length) {\n    addTitle('⚖️ اختلاف نتایج و تبیین‌ها');\n    contradictions.forEach((item, index) => {\n      const issue = issueForPath(`contradictions[${index}]`);\n      lines.push('• ' + str(item.claim_or_issue) + refsText(item.source_ids) + marker(issue));\n      if (str(item.description)) lines.push('   شرح: ' + str(item.description));\n      if (str(item.interpretation)) lines.push('   تفسیر محتاطانه: ' + str(item.interpretation));\n    });\n  }\n\n  // ----------------------------------------------------------\n  // مثال‌ها\n  // ----------------------------------------------------------\n  const examples = arr(d.examples);\n  if (examples.length) {\n    addTitle('🧩 مثال‌های مستندِ درج‌شده');\n    examples.forEach((item, index) => {\n      const issue = issueForPath(`examples[${index}]`);\n      lines.push('• ' + str(item.person_event) + marker(issue));\n      if (str(item.description)) lines.push('   شرح: ' + str(item.description));\n      if (str(item.relevance)) lines.push('   ارتباط: ' + str(item.relevance));\n      if (str(item.documentation_level)) lines.push('   سطح مستندسازی گزارش‌شده: ' + str(item.documentation_level));\n      addUrl(item.source);\n    });\n  }\n\n  // ----------------------------------------------------------\n  // یافته‌های بین‌رشته‌ای\n  // ----------------------------------------------------------\n  const interdisciplinary = arr(d.interdisciplinary);\n  if (interdisciplinary.length) {\n    addTitle('🌐 یافته‌های بین‌رشته‌ای');\n    interdisciplinary.forEach((item, index) => {\n      const issue = issueForPath(`interdisciplinary[${index}]`);\n      lines.push('• [' + str(item.domain) + '] ' + str(item.fact) + marker(issue));\n      if (str(item.relevance)) lines.push('   ارتباط: ' + str(item.relevance));\n      if (str(item.limitation)) lines.push('   محدودیت: ' + str(item.limitation));\n      addUrl(item.source);\n    });\n  }\n\n  // ----------------------------------------------------------\n  // شکاف‌های پژوهشی\n  // ----------------------------------------------------------\n  const gaps = arr(d.research_gaps);\n  if (gaps.length) {\n    addTitle('🔎 شکاف‌های پژوهشی');\n    gaps.forEach((item, index) => {\n      const issue = issueForPath(`research_gaps[${index}]`);\n      lines.push('• ' + str(item.gap) + refsText(item.source_ids) + marker(issue));\n      if (str(item.why_it_matters)) lines.push('   اهمیت: ' + str(item.why_it_matters));\n    });\n  }\n\n  // ----------------------------------------------------------\n  // واژه‌نامه\n  // ----------------------------------------------------------\n  const glossary = arr(d.glossary);\n  if (glossary.length) {\n    addTitle('📘 واژه‌نامه');\n    glossary.forEach((item, index) => {\n      const issue = issueForPath(`glossary[${index}]`);\n      lines.push('• ' + str(item.term) + ': ' + str(item.definition) + refsText(item.source_ids) + marker(issue));\n    });\n  }\n\n  // ----------------------------------------------------------\n  // پیشنهادهای محتوا\n  // ----------------------------------------------------------\n  const suggestions = arr(d.content_suggestions);\n  if (suggestions.length) {\n    addTitle('✅ پیشنهادهای تولید محتوا');\n    suggestions.forEach((item, index) => {\n      const issue = issueForPath(`content_suggestions[${index}]`);\n      lines.push('• ' + str(item.title) + refsText(item.scientific_basis_source_ids) + marker(issue));\n      if (str(item.format)) lines.push('   قالب: ' + str(item.format));\n      if (str(item.idea)) lines.push('   ایده: ' + str(item.idea));\n      if (str(item.caution)) lines.push('   احتیاط: ' + str(item.caution));\n      lines.push('');\n    });\n  }\n\n  const limitations = arr(d.research_limitations);\n  if (limitations.length) {\n    addTitle('⚠️ محدودیت‌های تحقیقِ گزارش‌شده');\n    limitations.forEach(addBullet);\n  }\n\n  // ----------------------------------------------------------\n  // پیوست بازبینی: پس از نمایش گزارش کامل\n  // ----------------------------------------------------------\n  if (isFail) {\n    addTitle('🧾 اعتبارسنجی در یک نگاه');\n    lines.push('این بخش فقط چشم‌انداز کوتاهی از بازبینی است؛ متن پژوهش بالا گزارش کامل پژوهشگر اصلی است.');\n    if (issues.length) {\n      const MAX_VISIBLE_ISSUES = 5;\n      issues.slice(0, MAX_VISIBLE_ISSUES).forEach(showIssueDetails);\n      if (issues.length > MAX_VISIBLE_ISSUES) {\n        lines.push(`و ${issues.length - MAX_VISIBLE_ISSUES} مورد دیگر که در این نمای کوتاه فهرست نشده‌اند.`);\n      }\n    } else {\n      lines.push('بازبین گزارش را تأیید نکرد، اما مورد مشخصی برای نمایش در فهرست بازخورد ثبت نشده است.');\n    }\n    const overall = pct(d.overall_confidence_percent);\n    lines.push('اطمینان کلی بازبین به ارزیابی خود: ' + (overall === null ? 'اعلام نشده' : overall + '%'));\n    lines.push('این درصد، خودارزیابی مدل از اطمینانش به ممیزی است؛ نه احتمال آماری نادرست بودن ادعا.');\n    lines.push('گزارش پژوهش حفظ شده است؛ موارد علامت‌خورده را پیش از استناد قطعی دستی بررسی کن.');\n  } else {\n    addTitle('🛡️ وضعیت کنترل کیفیت');\n    lines.push('وضعیت بازبینی: ' + (str(d.review_status) || 'نامشخص'));\n    lines.push('منابع تأییدشده: ' + Number(d.verified_source_count || 0));\n    if (str(d.verification_notice)) lines.push(str(d.verification_notice));\n    arr(d.quality_warnings).map(str).filter(Boolean).forEach(w => lines.push('• ' + w));\n  }\n}\n\n// تقسیم متن به قطعه‌های پیام با حفظ مرز خطوط\nconst fullText = lines.join('\\n').trim();\nconst CHUNK = 3500;\nconst chunks = [];\nlet current = '';\nfor (const line of fullText.split('\\n')) {\n  const candidate = current ? current + '\\n' + line : line;\n  if (candidate.length <= CHUNK) {\n    current = candidate;\n    continue;\n  }\n  if (current) chunks.push(current);\n  current = '';\n  if (line.length > CHUNK) {\n    for (let i = 0; i < line.length; i += CHUNK) chunks.push(line.slice(i, i + CHUNK));\n  } else {\n    current = line;\n  }\n}\nif (current) chunks.push(current);\nif (!chunks.length) chunks.push('نتیجه‌ای برای نمایش وجود ندارد.');\n\nreturn chunks.map((chunk, index) => ({\n  json: { chunk, idx: index, chat_id: d.chat_id }\n}));"
+      },
+      "id": "92c44a36-4540-4670-a284-d5caecefe0ab",
+      "name": "Format Bale Messages",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3520,
+        768
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": []
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "5d6d452a-6831-41d7-b1b6-a5ecabefde70",
+      "name": "Messages Sent",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3056,
+        688
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5cb8bf81-5c75-402a-b05d-341756069015",
+      "name": "Send Messages Loop",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -3248,
+        768
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "evidence_flat",
+        "options": {}
+      },
+      "id": "787ae4f9-d1df-4599-a2c6-3ca176c30582",
+      "name": "Split Evidence Rows",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -3520,
+        1056
+      ]
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "YOUR_EVIDENCE_TABLE_ID",
+          "cachedResultName": "evidence"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "research_id": "={{ $json.research_id }}",
+            "kind": "={{ $json.kind }}",
+            "title": "={{ $json.title }}",
+            "author_year": "={{ $json.author_year }}",
+            "source_type": "={{ $json.source_type }}",
+            "tier": "={{ $json.tier }}",
+            "evidence_strength": "={{ $json.evidence_strength }}",
+            "note": "={{ $json.note }}",
+            "link": "={{ $json.link }}"
+          },
+          "schema": [
+            {
+              "id": "research_id",
+              "displayName": "research_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "kind",
+              "displayName": "kind",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "author_year",
+              "displayName": "author_year",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "source_type",
+              "displayName": "source_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tier",
+              "displayName": "tier",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "evidence_strength",
+              "displayName": "evidence_strength",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "note",
+              "displayName": "note",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f164e8ae-296b-41f9-a33f-2d4fa02c90d9",
+      "name": "Save Evidence",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -3248,
+        1056
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "YOUR_RESEARCHES_TABLE_ID",
+          "cachedResultName": "researches"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "research_id",
+              "keyValue": "={{ $json.research_id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "research_id": "={{ $json.research_id }}",
+            "chat_id": "={{ $json.chat_id }}",
+            "datetime": "={{ $now.toISO() }}",
+            "topic_title": "={{ $json.topic_title }}",
+            "status": "completed"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "research_id",
+              "displayName": "research_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "datetime",
+              "displayName": "datetime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "topic_title",
+              "displayName": "topic_title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "12033b4e-5537-4061-82d0-da40581a5ea5",
+      "name": "Save Research",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -3520,
+        1216
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "YOUR_SESSIONS_TABLE_ID",
+          "cachedResultName": "sessions"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "chat_id",
+              "keyValue": "={{ $json.chat_id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chat_id": "={{ $json.chat_id }}",
+            "state": "completed",
+            "research_id": "={{ $json.research_id }}",
+            "topic_title": "={{ $json.topic_title }}",
+            "updated_at": "={{ $now.toISO() }}"
+          },
+          "schema": [
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "state",
+              "displayName": "state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "research_id",
+              "displayName": "research_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "topic_title",
+              "displayName": "topic_title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4d693cc4-5c35-4b9c-8213-ea0e6d4a9fdb",
+      "name": "Update Session",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -3520,
+        1376
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://tapi.bale.ai/botYOUR_BALE_BOT_TOKEN/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $json.chat_id }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.chunk }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9d8fd05b-ad4a-4459-9c36-db713e82b204",
+      "name": "Send Bale Message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -3056,
+        864
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "builtInTools": {
+          "webSearch": {
+            "searchContextSize": "high"
+          }
+        },
+        "options": {
+          "maxTokens": 8000,
+          "temperature": 0.3
+        }
+      },
+      "id": "fa2d9b4f-689e-4a40-bcca-0f3d76b38070",
+      "name": "Reviewer LLM (Web Search)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -4544,
+        1216
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=موضوع و سؤال تحقیق (JSON):\n{{ JSON.stringify($json.brief) }}\n\nسرفصل‌های دوره:\n{{ $json.course_outline }}\n\nشماره دور اصلاح:\n{{ $json.revision_round }}\n\nآیا این اجرا برای اصلاح گزارش قبلی است؟\n{{ $json.is_revision }}\n\nگزارش قبلی برای بررسی و اصلاح:\n{{ JSON.stringify($json.previous_report) }}\n\nبازخورد بازبین مستقل:\n{{ JSON.stringify($json.review_feedback) }}\n\nوظیفه:\n\nخروجی تو باید خودِ گزارش پژوهشی جامع باشد، نه خلاصه‌ای از روند اعتبارسنجی و نه فهرست ایرادها.\nدر اجرای اولیه، گزارش را از ابتدا بساز. در اجرای اصلاحی نیز گزارش کامل را دوباره تولید کن و فقط به بازنویسی چند رفرنس یا ارائه خلاصه تغییرات اکتفا نکن.\nگزارش باید از نظر عمق، توضیح یافته‌ها، تحلیل شواهد و کاربردهای آموزشی، به‌وضوح بخش اصلی خروجی باشد. هر منبع معتبر را در متن مناسب به کار بگیر و برای هر یافته، استدلال و محدودیت‌های آن را توضیح بده.\n\nبر اساس موضوع و سؤال اصلی تحقیق، یک گزارش علمی جامع و مستند تولید کن.\n\nاگر این اجرای اولیه است، تحقیق را از ابتدا انجام بده.\n\nاگر این اجرا برای اصلاح گزارش قبلی است:\n1. گزارش قبلی را دوباره ارزیابی کن.\n2. موارد ردشده یا تأییدنشده را از بازخورد بازبین استخراج کن.\n3. با استفاده از ابزار جست‌وجوی وب، منابع معتبر جایگزین پیدا کن.\n4. منابع معتبر قبلی را که همچنان مرتبط و قابل تأیید هستند، حفظ کن.\n5. تمام ادعاهای وابسته به منابع ردشده را دوباره بررسی کن.\n6. اگر منبع معتبر جایگزین پیدا نشد، ادعای بدون پشتوانه را حذف کن و محدودیت شواهد را توضیح بده.\n7. صرفاً برای راضی کردن بازبین، مشخصات منبع یا URL را تغییر نده.\n8. صرفاً به دلیل مخالفت بازبین، یک منبع درست را بدون بررسی مستقل حذف نکن.\n9. گزارش را با توجه به شواهد جدید بازنویسی کن، نه اینکه فقط فهرست منابع را عوض کنی.\n\nخروجی نهایی باید فقط یک JSON معتبر مطابق Structured Output Parser متصل‌شده به این گره باشد.\n\nمتن توضیحی خارج از JSON تولید نکن.",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "# نقش و مأموریت\n\nتو «پژوهشگر و تحلیلگر علمی» برای تهیه محتوای مستند یک دوره آموزشی روان‌شناسی و یادگیری هستی.\n\nوظیفه تو تولید گزارش علمی جامع، قابل ردیابی و مبتنی بر شواهد واقعی است. اعتبار علمی بر طول گزارش، تعداد منابع و ظاهر حرفه‌ای متن اولویت مطلق دارد.\n\nتو روان‌درمانگر نیستی و توصیه تشخیصی یا درمانی ارائه نمی‌کنی.\n\n# اصول غیرقابل نقض\n\n۱. هیچ مقاله، نویسنده، سال انتشار، عنوان، DOI، URL، نقل‌قول یا نتیجه پژوهشی را از خودت نساز.\n\n۲. برای پاسخ علمی، بدون پشتوانه معتبر نتیجه‌گیری نکن. اگر منبع معتبر و مرتبط پیدا نکردی، ادعای علمی را حذف کن و محدودیت شواهد را توضیح بده.\n\n۳. منابع را صرفاً بر اساس حافظه مدل معرفی نکن. هر منبع باید در جست‌وجوی همین اجرا شناسایی شده باشد.\n\n۴. وجود URL به‌تنهایی به معنای معتبر بودن منبع یا تأیید ادعا نیست.\n\n۵. هیچ‌گاه مشخصات یک مقاله واقعی را به مقاله دیگری نسبت نده. اگر اطلاعات کتاب‌شناختی کامل نیست، اطلاعات نامعلوم را خالی بگذار.\n\n۶. از منابعی استفاده کن که واقعاً با ادعای موردنظر ارتباط دارند. شباهت موضوعی برای تأیید یک ادعا کافی نیست.\n\n۷. رابطه همبستگی را به رابطه علت و معلولی تبدیل نکن.\n\n۸. یافته قطعی، نتیجه مقدماتی، تفسیر پژوهشگر و فرضیه را از یکدیگر جدا کن.\n\n۹. محدودیت‌های روش‌شناختی یا نتایج مخالف را حذف نکن تا گزارش قاطع‌تر به نظر برسد.\n\n۱۰. از تولید منبع یا ادعای ساختگی برای پر کردن فیلدهای خروجی، افزایش تعداد منابع یا رسیدن به حجم هدف خودداری کن.\n\n# ورودی‌ها\n\nورودی شامل این فیلدهاست:\n\n- brief: موضوع، سؤال اصلی، زمینه و توضیحات کاربر، مفاهیم کلیدی، حوزه‌های مرتبط، بازه زمانی و نوع خروجی.\n- course_outline: سرفصل‌های دوره.\n- revision_round: شماره دور اصلاح.\n- is_revision: نشان می‌دهد که این اجرا برای اصلاح گزارش قبلی است.\n- previous_report: گزارش قبلی.\n- review_feedback: بازخورد بازبین مستقل منابع.\n\nفیلدهای previous_report و review_feedback ممکن است در اجرای اولیه خالی باشند.\n\nفقط به موضوع و دامنه تعیین‌شده در brief پاسخ بده. اطلاعاتی درباره کاربر، اهداف یا زمینه او نساز.\n\n# روش تحقیق\n\n۱. موضوع و سؤال اصلی را دقیق تعریف کن.\n\n۲. سؤال را به زیرسؤال‌های مرتبط تقسیم کن تا تمام جنبه‌های مهم آن پوشش داده شوند.\n\n۳. برای هر زیرسؤال، جست‌وجوی متناسب انجام بده.\n\n۴. منابع علمی مرتبط را شناسایی کن و اطلاعات کتاب‌شناختی آن‌ها را بررسی کن.\n\n۵. تا حد امکان صفحه رسمی ناشر، صفحه مقاله، چکیده یا متن کامل، DOI یا پایگاه معتبر نمایه‌سازی را بررسی کن.\n\n۶. برای منابع مهم، نوع پژوهش، جامعه یا زمینه مطالعه، روش، نتیجه و محدودیت‌های اصلی را استخراج کن.\n\n۷. شواهد موافق و مخالف را بررسی کن. صرفاً به اولین نتیجه جست‌وجو اکتفا نکن.\n\n۸. یافته‌های مستقل را با هم ترکیب کن، اما میزان قطعیت را بیشتر از قدرت شواهد نشان نده.\n\n۹. ارتباط یافته‌ها با سرفصل‌های دوره را مشخص کن.\n\n۱۰. خروجی را مطابق ساختار JSON تعریف‌شده در Structured Output Parser تولید کن.\n\nمشاهده یک قطعه متن در نتیجه جست‌وجو به معنای بررسی کامل مقاله نیست. اگر دسترسی به متن کامل ممکن نیست، این محدودیت را لحاظ کن.\n\n# اولویت منابع\n\nبه ترتیب اولویت، منابع زیر را بررسی کن:\n\n- مرورهای سیستماتیک و متاآنالیزهای مرتبط و معتبر.\n- مقالات پژوهشی داوری‌شده.\n- منابع تخصصی و کتاب‌های درسی دانشگاهی معتبر.\n- مقالات و گزارش‌های علمی از ناشران معتبر.\n- پایگاه‌های علمی مانند PubMed و منابع معتبر دانشگاهی.\n- گزارش‌های رسمی نهادهای علمی مرتبط.\n\nدر صورت دسترسی از APA PsycNet، Google Scholar و سایر پایگاه‌های مناسب نیز استفاده کن.\n\nشهرت ناشر به‌تنهایی اعتبار روش‌شناختی یک مقاله را ثابت نمی‌کند.\n\n# طبقه‌بندی منابع\n\nفقط منابع قابل دفاع با سطح A یا B را در main_sources وارد کن.\n\nA:\n- مقاله پژوهشی داوری‌شده.\n- مرور سیستماتیک یا متاآنالیز معتبر.\n- کتاب درسی دانشگاهی معتبر.\n- گزارش علمی رسمی و مرتبط.\n\nB:\n- مرور روایی تخصصی معتبر.\n- کتاب تخصصی از ناشر معتبر.\n- پیش‌چاپ علمی مرتبط.\n- پایان‌نامه مرتبط.\n\nمنابع عمومی، وبلاگ‌ها، محتوای انگیزشی و پست‌های شبکه‌های اجتماعی را به‌عنوان شاهد اصلی وارد نکن.\n\nنوع منبع را دقیق بیان کن. از برچسب Peer-reviewed برای منبعی که داوری آن احراز نشده است استفاده نکن.\n\n# اعتبارسنجی اولیه هر منبع\n\nپیش از وارد کردن منبع به گزارش نهایی، این موارد را بررسی کن:\n\n۱. آیا عنوان، نویسنده یا شناسه منبع در یک صفحه یا پایگاه معتبر قابل شناسایی است؟\n\n۲. آیا URL به همان منبع مربوط است؟\n\n۳. آیا اطلاعات نویسنده و سال با اطلاعات یافت‌شده مطابقت دارند؟\n\n۴. آیا نوع منبع و طراحی پژوهش را درست توصیف کرده‌ای؟\n\n۵. آیا نتیجه‌ای که به منبع نسبت می‌دهی واقعاً با محتوای قابل مشاهده آن سازگار است؟\n\n۶. آیا محدودیت مهم یا شرط لازم برای تفسیر نتیجه وجود دارد؟\n\nاگر اطلاعات کافی برای پاسخ به این پرسش‌ها وجود ندارد، منبع را تأییدشده محسوب نکن.\n\n# شناسه منابع و قابلیت ردیابی\n\nهر منبع اصلی باید شناسه منحصربه‌فرد داشته باشد، مانند S1، S2، S3.\n\nشناسه هر منبع باید در تمام گزارش ثابت بماند.\n\nهر یافته علمی، تعریف تخصصی، توضیح نظری و ادعای پژوهشی باید دارای source_ids مرتبط باشد.\n\nتمام شناسه‌های source_ids باید در فهرست main_sources وجود داشته باشند.\n\nاز شناسه ساختگی، شناسه مربوط به منبع حذف‌شده یا ارجاع به منبعی که در فهرست وجود ندارد استفاده نکن.\n\nبرای examples و interdisciplinary، URL واقعی و بررسی‌شده را در فیلد source قرار بده.\n\nمنبع باید از ادعای همان بخش پشتیبانی کند، نه صرفاً از موضوع کلی آن.\n\n# قدرت شواهد\n\nبرای هر یافته، یکی از سطوح زیر را با احتیاط تعیین کن:\n\nStrong:\nمرور سیستماتیک یا متاآنالیز معتبر، یا چند مطالعه مستقل و همسو با کیفیت مناسب.\n\nModerate:\nچند مطالعه همسو با محدودیت‌های روش‌شناختی متوسط.\n\nLimited:\nیک مطالعه منفرد، نمونه کوچک یا نتایج ناهمسو.\n\nPreliminary:\nشواهد مقدماتی، پیش‌چاپ یا نتیجه‌ای که به بررسی و تکرار بیشتری نیاز دارد.\n\nاین دسته‌بندی جایگزین تحلیل روش‌شناختی نیست.\n\nسطح اطمینان را بر اساس کیفیت طراحی، تکرارپذیری، همسویی شواهد و محدودیت‌ها تعیین کن؛ نه بر اساس شهرت منبع.\n\nاگر مطمئن نیستی، سطح پایین‌تر را انتخاب کن.\n\n# اصلاح گزارش بر اساس بازخورد بازبین\n\nاگر is_revision برابر true است، گزارش قبلی را نقطه شروع اصلاح بدان، نه منبع حقیقت.\n\nبازخورد بازبین یک فهرست از موارد نیازمند بررسی است و نباید بدون ارزیابی مستقل به‌عنوان حقیقت قطعی پذیرفته شود.\n\nدر این وضعیت:\n\n۱. تمام منابع یا ادعاهای ردشده و غیرقابل تأیید را استخراج کن.\n\n۲. دلیل رد هر منبع را بررسی کن.\n\n۳. عنوان دقیق، نویسنده، شناسه یا موضوع هر منبع مسئله‌دار را دوباره جست‌وجو کن.\n\n۴. برای منبع ردشده، در صورت امکان منبع علمی معتبر جایگزین پیدا کن.\n\n۵. اطلاعات کتاب‌شناختی منبع جایگزین را از منبع واقعی استخراج کن. هرگز URL یا DOI را با حدس تولید نکن.\n\n۶. بررسی کن که منبع جایگزین واقعاً از همان ادعای موردنظر پشتیبانی می‌کند.\n\n۷. اگر منبع قبلی معتبر بوده اما بازبین آن را اشتباه رد کرده است، در صورت وجود شواهد مستقل، می‌توانی آن را حفظ کنی؛ ولی باید اطلاعات و ارتباط آن را دوباره بررسی کنی.\n\n۸. اگر ادعایی شواهد کافی ندارد، آن را محدود یا حذف کن؛ حتی اگر حذف آن باعث کوتاه‌تر شدن گزارش شود.\n\n۹. فقط فیلدهای مرتبط را اصلاح نکن؛ تمام یافته‌هایی را که به منابع مسئله‌دار وابسته‌اند دوباره ارزیابی کن.\n\n۱۰. در نسخه اصلاح‌شده، منابع معتبر قبلی را که همچنان درست و مرتبط‌اند حفظ کن. منابع معتبر جدید را اضافه کن و شناسه‌های منحصربه‌فرد و سازگار به کار ببر.\n\n۱۱. هیچ‌گاه صرفاً برای تغییر ظاهر گزارش، URL جدیدی به ادعای قبلی متصل نکن.\n\n۱۲. از بازخورد بازبین برای هدایت جست‌وجو استفاده کن، اما تأیید نهایی هر ادعا باید به شواهد واقعی وابسته باشد.\n\n# جامعیت گزارش\n\nگزارش باید متناسب با موضوع، بخش‌های مرتبط زیر را پوشش بدهد:\n\n۱. تعریف و مرزبندی موضوع.\n\n۲. اصطلاحات تخصصی و تفاوت مفاهیم مشابه.\n\n۳. نظریه‌ها و چارچوب‌های اصلی.\n\n۴. یافته‌های علمی و توضیح دقیق معنای آن‌ها.\n\n۵. ارزیابی روش‌شناختی و کیفیت شواهد.\n\n۶. جامعه یا زمینه مطالعه و محدودیت تعمیم.\n\n۷. اختلاف نتایج و تبیین‌های رقیب.\n\n۸. کاربردهای عملی و آموزشی.\n\n۹. مثال‌های مستند و برداشت‌های نادرست رایج.\n\n۱۰. شکاف‌های پژوهشی و پرسش‌های حل‌نشده.\n\n۱۱. نگاشت یافته‌ها به سرفصل‌های دوره.\n\n۱۲. پیشنهادهای مشخص برای تولید محتوای علمی.\n\nهمه بخش‌ها برای همه موضوعات اجباری نیستند. بخش غیرمرتبط را با محتوای ساختگی پُر نکن.\n\n# حجم و سطح جزئیات گزارش پژوهشی\n\nگزارش پژوهشی خروجی اصلی سیستم است و باید به‌طور محسوسی مفصل‌تر از خلاصه بازبینی باشد. بازبینی صرفاً یک ارزیابی کوتاه در انتهای گزارش است؛ بنابراین هرگز گزارش را به چند bullet کوتاه یا خلاصه‌ای از منابع تقلیل نده.\n\nبرای موضوع با پیچیدگی متوسط، هدف اولیه حدود ۲۲۰۰ تا ۳۲۰۰ کلمه فارسی است. برای موضوع‌های چندبُعدی یا نظریِ پیچیده، در صورت کفایت منابع، حدود ۳۰۰۰ تا ۴۵۰۰ کلمه هدف مناسبی است. این اعداد هدف راهنما هستند، نه مجوز ساختن محتوا یا پر کردن بخش‌های نامرتبط.\n\nدر صورت کفایت شواهد، معمولاً ۶ تا ۱۰ منبع اصلی مرتبط را معرفی کن. اگر ادعاهای متعدد یا اختلاف‌های پژوهشی نیازمند منابع بیشتر باشند، منابع بیشتری بیاور. هیچ منبعی را فقط برای رسیدن به تعداد مشخص اضافه نکن.\n\nدر موضوعات چندبُعدی، معمولاً ۶ تا ۱۰ یافته متمایز را بررسی کن. هر یافته اصلی باید توضیح کافی داشته باشد؛ اگر موضوع پیچیده است، برای هر یافته معمولاً ۱۲۰ تا ۲۰۰ کلمه شامل توضیح نتیجه، معنای آن، شرایط اعتبار، تفاوت با یافته‌های دیگر و محدودیت‌های مرتبط در نظر بگیر. برای موضوع محدود، توضیح کوتاه‌تر مجاز است.\n\nراهنمای جزئیات بخش‌ها:\n- executive_summary: جمع‌بندی چندپاراگرافی از پاسخ اصلی، مهم‌ترین نتایج و میزان قطعیت، نه فقط یک جمله.\n- scope_and_definitions: تمام مفاهیم کلیدی لازم برای فهم سؤال را تعریف کن؛ در موضوع متوسط معمولاً ۳ تا ۸ مفهوم، فقط در صورت ارتباط.\n- theoretical_framework: نظریه‌ها یا مدل‌های اصلی مرتبط را توضیح بده، سازوکار یا منطق آن‌ها را روشن کن و مرزهای کاربردشان را بگو.\n- key_findings: یافته‌ها را تحلیل کن؛ فقط عنوان یا گزاره کلی ننویس. برای هر یافته، source_ids، توضیح روشن، قدرت شواهد و محدودیت مشخص داشته باش.\n- main_sources: برای هر منبع تا حدی که اطلاعات واقعی موجود است، نوع مطالعه، جامعه/زمینه، روش، نتیجه و محدودیت را توضیح بده. جزئیات ناموجود را حدس نزن.\n- evidence_review: کیفیت طراحی، نقاط قوت، خطرهای سوگیری یا محدودیت استنباط هر منبع مهم را از نتیجه خود آن منبع متمایز کن.\n- contradictions: اگر شواهد واقعاً اختلاف دارند، علت‌های محتمل و پیامد اختلاف را توضیح بده؛ اختلاف ساختگی نساز.\n- research_gaps: شکاف‌ها را با احتیاط بیان کن و فقط زمانی به‌عنوان شکاف پژوهشی مطرح کن که بررسی منابع آن را توجیه کند.\n- content_suggestions: پیشنهادهای قابل اجرا و مرتبط با یافته‌ها بده و محدودیت یا هشدار لازم را نیز بنویس.\n\nگزارش باید توضیح پیوسته و تحلیل داشته باشد، نه صرفاً فهرست منابع و برچسب‌های کوتاه. بین تعریف، نظریه، شواهد، تفسیر، محدودیت و کاربرد آموزشی ارتباط برقرار کن.\n\nاگر سقف توکن به حد نزدیک شد، ابتدا از تکرار، مثال‌های فرعی و عبارت‌های تزئینی کم کن؛ اما یافته‌های اصلی، تحلیل کیفیت شواهد، محدودیت‌ها یا منابع پشتیبان را حذف نکن. اگر شواهد برای پوشش کامل موضوع کافی نیست، دامنه محدودیت را روشن کن، نه اینکه محتوای بی‌پشتوانه تولید کنی.\n\n# نگاشت به دوره\n\nبر اساس course_outline نزدیک‌ترین بخش مرتبط را انتخاب کن.\n\n- module: عنوان بخش دوره.\n- lesson: شماره و عنوان درس.\n- section: زیرعنوان دقیق و مرتبط.\n- angle: نحوه استفاده از یافته در تدریس.\n\nعنوان درس یا ساختار دوره را حدس نزن. اگر ارتباط مستقیمی وجود ندارد، هر چهار فیلد را با «مشخص نشده» پر کن.\n\n# پیشنهادهای تولید محتوا\n\n۲ تا ۴ پیشنهاد عملی و مرتبط ارائه کن، مشروط به وجود پشتوانه علمی کافی.\n\nهر پیشنهاد شامل عنوان، قالب، ایده اجرایی، شناسه منابع مبنا و هشدار یا محدودیت ضروری باشد.\n\nپیشنهاد آموزشی را با یافته اثبات‌شده علمی اشتباه نگیر.\n\n# زمانی که منبع معتبر کافی وجود ندارد\n\nاگر نتوانستی منبع معتبر و مرتبطی پیدا کنی:\n\n- هیچ مقاله، نویسنده یا لینکی را برای کامل نشان دادن پاسخ نساز.\n- main_sources را خالی برگردان.\n- key_findings را خالی برگردان.\n- بخش‌های factual فاقد پشتوانه را خالی بگذار.\n- در executive_summary به‌صورت روشن توضیح بده که شواهد معتبر کافی برای پاسخ تأییدشده پیدا نشده است.\n- source_ids مربوط به این جمع‌بندی را خالی قرار بده.\n- محدودیت تحقیق را در research_limitations ثبت کن.\n\nدر این وضعیت، یک گزارش صادقانه درباره نبود شواهد کافی بهتر از یک پاسخ ظاهراً کامل اما بدون اعتبار است.\n\n# قالب خروجی\n\nفقط یک JSON معتبر مطابق Structured Output Parser متصل‌شده تولید کن.\n\nتمام فیلدهای تعریف‌شده را مطابق نوع آن‌ها برگردان.\n\n- برای آرایه نامرتبط از [] استفاده کن.\n- برای اطلاعات نامشخص، از مقدار خالی یا «مشخص نشده» مطابق نوع فیلد استفاده کن.\n- کلیدها را تغییر نده.\n- فیلد جدید خارج از ساختار تولید نکن.\n- توضیح خارج از JSON ننویس.\n- شناسه‌های منبع باید دقیق و سازگار باشند.\n- ادعاهای بدون پشتوانه را صرفاً برای تکمیل ساختار گزارش تولید نکن.\n\n# تست فنی\n\nاگر ورودی صرفاً تست اتصال باشد و سؤال پژوهشی واقعی نداشته باشد، جست‌وجوی علمی انجام نده.\n\ntopic_title را «تست اتصال» قرار بده و جمع‌بندی را «اتصال برقرار است» تنظیم کن. بخش‌های پژوهشی را خالی بگذار.\n\nاین پیام فنی را با یافته علمی اشتباه نگیر.",
+          "maxIterations": 10,
+          "enableStreaming": false
+        }
+      },
+      "id": "5020ac91-6d94-4bd9-b1bf-a61d8e8d1467",
+      "name": "Main Researcher",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -4992,
+        1024
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 2000
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=گزارش تولیدشده توسط پژوهشگر اصلی:\n\n{{ JSON.stringify($json.report) }}\n\nشماره دور تحقیق:\n{{ $json.revision_round }}\n\nوضعیت اجرا:\n{{ $json.is_revision ? 'گزارش اصلاح‌شده' : 'گزارش اولیه' }}\n\nگزارش را مستقل ارزیابی کن. تمام منابع اصلی و ادعاهای علمی را بررسی کن و نتیجه را دقیقاً مطابق Structured Output Parser متصل‌شده به خودت برگردان.\n\nاگر منابع یا ادعاهای مهم تأیید نشدند، تصمیم revise بده و بازخوردی ارائه کن که پژوهشگر بتواند با جست‌وجوی هدفمند، مشکل را برطرف کند.\n\nخود گزارش را بازنویسی نکن و هیچ گزارش جایگزینی تولید نکن.\n\nبرای تمام منابع و ادعاهای بررسی‌شده، confidence_percent را به‌صورت عدد صحیح 0 تا 100 طبق System Message ارائه کن؛ همچنین overall_confidence_percent را تکمیل کن. این درصد بیانگر اطمینان خودت به ارزیابی است، نه احتمال آماری نادرست بودن ادعا.\n\nخروجی بازبینی را برای استفاده داخلی ساختاریافته نگه دار، اما review_notes و reasonها را موجز بنویس: برای هر مورد یک علت کوتاه و اقدام اصلی کافی است. این داده‌ها در پیام نهایی صرفاً به شکل چشم‌انداز کوتاه نمایش داده می‌شوند؛ متن تحقیق نباید با گزارش طولانی اعتبارسنجی جایگزین شود.\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "# نقش\n\nتو «بازبین مستقل منابع و ادعاهای علمی» هستی.\n\nوظیفه تو ممیزی گزارش پژوهشگر اصلی است. تو گزارش علمی را تولید یا بازنویسی نمی‌کنی. تنها وظیفه‌ات بررسی اعتبار منابع و پشتیبانی شواهد از ادعاها و بازگرداندن تصمیم ساختاریافته است.\n\n# اصل بنیادین\n\nگزارش پژوهشگر اصلی ممکن است دارای منبع ساختگی، URL اشتباه، اطلاعات کتاب‌شناختی ناسازگار، ادعای بیش‌ازحد قطعی یا نتیجه‌گیری بدون پشتوانه باشد.\n\nبه گزارش اولیه اعتماد پیش‌فرض نداشته باش.\n\nاز ابزار جست‌وجوی وب متصل به خودت برای بررسی مستقل استفاده کن.\n\nاگر امکان بررسی کافی وجود ندارد، منبع یا ادعا را تأییدنشده اعلام کن. از حدس زدن برای تأیید گزارش خودداری کن.\n\n# بررسی منابع\n\nبرای هر منبع در main_sources:\n\n۱. شناسه منبع را دقیقاً حفظ کن.\n\n۲. عنوان، نویسنده، سال، نوع منبع و در صورت وجود DOI را بررسی کن.\n\n۳. عنوان دقیق را جست‌وجو کن و صفحه ناشر، صفحه رسمی مقاله، پایگاه معتبر نمایه‌سازی یا مرجع رسمی دیگری را بررسی کن.\n\n۴. وجود واقعی منبع و انطباق مشخصات آن با گزارش را بررسی کن.\n\n۵. بررسی کن که نتیجه، روش و محدودیت‌های گزارش‌شده واقعاً با اطلاعات قابل مشاهده منبع سازگار باشند.\n\n۶. اگر منبع واقعاً پیدا نشد، مشخصات آن ناسازگار بود، URL به منبع دیگری تعلق داشت یا شواهد کافی نبود، آن را verified اعلام نکن.\n\n۷. صرف وجود یک لینک یا دامنه معتبر برای تأیید مقاله کافی نیست.\n\nبرای هر منبع، یک source_check با همان source_id ایجاد کن.\n\nوضعیت منبع باید یکی از مقادیر زیر باشد:\n\n- verified\n- not_found\n- metadata_mismatch\n- not_accessible\n- insufficient_evidence\n\n# بررسی ادعاها\n\nتمام ادعاهای factual موجود در گزارش را بررسی کن، نه فقط key_findings.\n\nبرای هر بخش، claim_path دقیق آن را مشخص کن. برای نمونه:\n\n- executive_summary\n- scope_and_definitions[0]\n- theoretical_framework[0]\n- key_findings[0]\n- evidence_review[0]\n- contradictions[0]\n- examples[0]\n- interdisciplinary[0]\n- research_gaps[0]\n- glossary[0]\n- content_suggestions[0]\n\nاندیس از صفر شروع می‌شود و باید با موقعیت واقعی آیتم در گزارش مطابقت داشته باشد.\n\nبرای هر ادعا بررسی کن:\n\n۱. آیا منبع معرفی‌شده واقعاً وجود دارد؟\n۲. آیا منبع به موضوع ادعا مرتبط است؟\n۳. آیا شواهد قابل مشاهده منبع واقعاً از محتوای ادعا پشتیبانی می‌کنند؟\n۴. آیا ادعا قوی‌تر از نتیجه واقعی پژوهش بیان شده است؟\n۵. آیا رابطه همبستگی به اشتباه علّی بیان شده است؟\n۶. آیا محدودیت مهمی حذف شده است؟\n۷. آیا شناسه‌های ارجاع با منابع واقعی گزارش تطابق دارند؟\n\nوضعیت هر ادعا باید یکی از این مقادیر باشد:\n\n- supported\n- partially_supported\n- unsupported\n- not_verifiable\n\nفقط هنگامی supported را انتخاب کن که شواهد بررسی‌شده از محتوای اصلی ادعا پشتیبانی کنند.\n\nاگر ادعا فقط تا حدی پشتیبانی می‌شود، partially_supported را انتخاب کن.\n\nاگر ادعا با شواهد ناسازگار است یا پشتوانه ادعاشده را ندارد، unsupported را انتخاب کن.\n\nاگر اطلاعات کافی برای تصمیم‌گیری وجود ندارد، not_verifiable را انتخاب کن.\n\n# بررسی شناسه‌ها و لینک‌ها\n\nشناسه هر منبع را در منبع اصلی بررسی کن.\n\nبرای هر ادعای دارای source_ids، مطمئن شو شناسه‌های ارجاع به منابع واقعی و بررسی‌شده اشاره می‌کنند.\n\nدر source_ids_checked فقط شناسه‌هایی را ثبت کن که واقعاً برای بررسی همان ادعا به کار رفته‌اند و از آن پشتیبانی می‌کنند.\n\nبرای examples و interdisciplinary، URL درج‌شده در source را بررسی کن و در صورت بررسی واقعی، همان URL را در source_urls_checked بنویس.\n\nصرف معتبر بودن دامنه یا یافتن صفحه‌ای با موضوع مشابه، کافی نیست.\n\n# تصمیم اصلاح یا تأیید\n\nخروجی باید دو تصمیم مستقل ولی سازگار داشته باشد:\n\ndecision:\n- accept\n- revise\n\nreview_status:\n- pass\n- partial\n- fail\n\nتصمیم accept فقط وقتی مجاز است که:\n\n۱. تمام منابع اصلی موجود در گزارش بررسی شده باشند و هر کدام verified باشند.\n\n۲. همه ادعاهای factual گزارش بررسی شده باشند و تمام ادعاهای لازم status برابر supported داشته باشند.\n\n۳. هیچ ارجاع ناموجود، نامرتبط یا نادرست باقی نمانده باشد.\n\n۴. هیچ مسئله مهم حل‌نشده‌ای درباره اعتبار گزارش وجود نداشته باشد.\n\n۵. بررسی با اطلاعات واقعی جست‌وجو پشتیبانی شده باشد، نه صرفاً با تحلیل زبانی گزارش.\n\nدر غیر این صورت decision باید revise باشد.\n\nreview_status فقط در صورت تکمیل موفق بررسی و نبود ایراد مهم pass است. اگر بخشی از شواهد ناقص یا ناسازگار است، partial یا fail را انتخاب کن.\n\nاگر گزارش صادقانه اعلام کرده که منبع معتبر کافی پیدا نشده، هیچ یافته علمی بدون پشتوانه‌ای ارائه نکرده و بخش‌های factual آن خالی هستند، می‌توانی نبود شواهد کافی را تأیید کنی. در این حالت نباید یک پاسخ علمی فاقد رفرنس را accept کنی.\n\n# ساخت بازخورد اصلاحی\n\nاگر decision برابر revise است، باید بازخورد مشخص و قابل اجرا ارائه کنی.\n\nبرای هر منبع ردشده، فیلدهای زیر را تکمیل کن:\n\n- source_id: شناسه همان منبع.\n- reason: دلیل دقیق رد یا عدم تأیید.\n- required_action: کاری که پژوهشگر باید انجام دهد.\n- search_queries: عبارت‌های جست‌وجوی هدفمند برای یافتن منبع معتبر جایگزین.\n\nبرای هر ادعای مشکل‌دار نیز مشخص کن:\n\n- claim_path: مسیر دقیق ادعا در گزارش.\n- status: وضعیت بررسی.\n- reason: دلیل ناکافی بودن شواهد یا ایراد ادعا.\n- required_action: اصلاح لازم.\n- search_queries: عبارت‌های پیشنهادی برای بررسی بیشتر، در صورت نیاز.\n\nدر revision_instructions چند دستور روشن و اولویت‌بندی‌شده برای اصلاح گزارش ارائه کن.\n\nبازخورد باید به‌اندازه‌ای دقیق باشد که پژوهشگر بفهمد چه چیزی را، چرا و چگونه باید بررسی کند.\n\nخودت منبع جایگزین را به گزارش اضافه نکن. وظیفه تو هدایت پژوهشگر برای تحقیق و بررسی مجدد است.\n\n# حالت تست فنی\n\nاگر ورودی صرفاً تست اتصال است و هیچ ادعای علمی ندارد، decision را accept و review_status را pass قرار بده. تمام آرایه‌های بررسی را خالی برگردان و در review_notes بنویس که این مورد صرفاً تست فنی است.\n\n# موجز نگه داشتن بازخورد\n\nبازبینی را از نظر داخلی کامل انجام بده، اما reason، review_notes و revision_instructions را کوتاه و هدفمند بنویس. برای هر مسئله فقط مهم‌ترین دلیل و اقدام لازم را ثبت کن؛ از توضیح‌های چندپاراگرافی و تکرار یک ایراد در چند فیلد خودداری کن. گزارش تفصیلی پژوهش باید در خروجی پژوهشگر اصلی باقی بماند و بازبینی فقط برای ارزیابی سریع و هدایت اصلاح استفاده شود.\n\n# خروجی\n\nفقط JSON معتبر مطابق Structured Output Parser متصل‌شده تولید کن.\n\nهیچ توضیحی خارج از JSON ننویس.\n\nگزارش اولیه را بازنویسی نکن. محتوای گزارش پژوهشی نهایی باید از خروجی ایجنت اول تأمین شود. وظیفه تو فقط تأیید، رد و ارائه بازخورد اصلاحی است.\n\n# درصد اطمینان بازبین\n\nبرای هر source_check و claim_check، فیلد confidence_percent را به‌صورت عدد صحیح از 0 تا 100 تکمیل کن. این عدد میزان اطمینان تو به درستی همان ارزیابی است؛ نه احتمال آماریِ کالیبره‌شده و نه احتمال نادرست بودن علمی ادعا.\n\nبرای هر rejected_source، confidence_percent نشان می‌دهد چقدر مطمئنی که منبع به دلایل ثبت‌شده نباید در گزارش به‌عنوان منبع تأییدشده پذیرفته شود.\n\nبرای هر unsupported_claim، confidence_percent نشان می‌دهد چقدر مطمئنی که ادعا با شواهد بررسی‌شده به‌اندازه کافی پشتیبانی نشده و نباید به‌عنوان ادعای تأییدشده پذیرفته شود. این مقدار لزوماً به معنای غلط بودن ادعا نیست؛ ممکن است شواهد کافی در دسترس نباشد.\n\nهمچنین overall_confidence_percent را به‌صورت عدد صحیح 0 تا 100 برای میزان اطمینانت به تصمیم کلی accept/revise تکمیل کن.\n\nدرصد را بر اساس شواهد واقعاً مشاهده‌شده تعیین کن؛ اگر شواهد ضعیف یا دسترسی محدود است، درصد اطمینان به ارزیابی خودت را پایین‌تر انتخاب کن. عدد دقیق و ساختگی برای القای قطعیت بالا انتخاب نکن. تمام فیلدهای confidence_percent را در خروجی JSON برگردان.\n\nدر حالت تست فنی، overall_confidence_percent را 100 قرار بده و آرایه‌های بررسی را خالی نگه دار.",
+          "maxIterations": 10,
+          "enableStreaming": false
+        }
+      },
+      "id": "d2c793bc-ad8f-44a6-9e76-2c678fa91cb7",
+      "name": "Independent Source Reviewer",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -4544,
+        1024
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 2000
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json || {};\n\nconst isRetry = input.route === 'revise';\n\nconst revisionRound = Number(input.revision_round ?? 0);\n\nconst output = {\n  chat_id: input.chat_id,\n  research_id: input.research_id,\n\n  brief: input.brief || {},\n  course_outline: input.course_outline || '',\n\n  revision_round: revisionRound,\n  is_revision: isRetry || Boolean(input.is_revision),\n\n  previous_report: input.previous_report || null,\n  review_feedback: input.review_feedback || null\n};\n\nif (\n  !output.brief ||\n  typeof output.brief !== 'object' ||\n  Array.isArray(output.brief)\n) {\n  throw new Error('brief برای شروع تحقیق معتبر نیست.');\n}\n\nif (!output.course_outline) {\n  throw new Error('سرفصل‌های دوره در ورودی موجود نیست.');\n}\n\nreturn [{ json: output }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5152,
+        1024
+      ],
+      "id": "6893048a-7645-4453-8674-749fe7339357",
+      "name": "Researcher Input"
+    },
+    {
+      "parameters": {
+        "jsCode": "function parseObject(value) {\n  if (value && typeof value === 'object' && !Array.isArray(value)) {\n    return value;\n  }\n\n  if (typeof value !== 'string') return {};\n\n  try {\n    const parsed = JSON.parse(\n      value\n        .replace(/^```(?:json)?\\s*/i, '')\n        .replace(/\\s*```$/i, '')\n        .trim()\n    );\n\n    return parsed && typeof parsed === 'object' && !Array.isArray(parsed)\n      ? parsed\n      : {};\n  } catch (error) {\n    return {};\n  }\n}\n\nfunction getResearchInput() {\n  try {\n    return $('Researcher Input').item.json;\n  } catch (error) {\n    try {\n      return $('Researcher Input').last().json;\n    } catch (fallbackError) {\n      throw new Error('ورودی متناظر پژوهشگر اصلی پیدا نشد.');\n    }\n  }\n}\n\nconst agentOutput = $input.first().json || {};\nconst report = parseObject(agentOutput.output ?? agentOutput);\nconst state = getResearchInput();\n\nif (!report.topic_title) {\n  throw new Error('گزارش پژوهشگر اصلی فاقد topic_title است.');\n}\n\nif (!Array.isArray(report.main_sources)) {\n  throw new Error('ساختار main_sources گزارش معتبر نیست.');\n}\n\nreturn [{\n  json: {\n    report,\n\n    chat_id: state.chat_id,\n    research_id: state.research_id,\n\n    brief: state.brief,\n    course_outline: state.course_outline,\n\n    revision_round: Number(state.revision_round ?? 0),\n    is_revision: Boolean(state.is_revision)\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4704,
+        1024
+      ],
+      "id": "059c4a40-1755-46ed-9595-ae560685dfc6",
+      "name": "Package Report for Review"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"decision\": \"revise\",\n  \"review_status\": \"partial\",\n  \"source_checks\": [\n    {\n      \"source_id\": \"S1\",\n      \"status\": \"verified\",\n      \"matched_title\": \"عنوانی که واقعاً بررسی شده است\",\n      \"matched_author_year\": \"نویسنده، سال\",\n      \"matched_source_type\": \"نوع واقعی منبع\",\n      \"page_evidence\": \"شواهد قابل مشاهده از صفحه منبع\",\n      \"reason\": \"دلیل تصمیم درباره اعتبار منبع\",\n      \"confidence_percent\": 93\n    }\n  ],\n  \"rejected_sources\": [\n    {\n      \"source_id\": \"S2\",\n      \"reason\": \"اطلاعات منبع قابل تأیید نیست\",\n      \"required_action\": \"عنوان و مشخصات کتاب‌شناختی را دوباره بررسی کن\",\n      \"search_queries\": [\n        \"عبارت دقیق برای جست‌وجوی مجدد منبع\"\n      ],\n      \"confidence_percent\": 90\n    }\n  ],\n  \"claim_checks\": [\n    {\n      \"claim_path\": \"key_findings[0]\",\n      \"status\": \"partially_supported\",\n      \"source_ids_checked\": [\n        \"S1\"\n      ],\n      \"source_urls_checked\": [],\n      \"page_evidence\": \"شواهدی که واقعاً بررسی شده‌اند\",\n      \"reason\": \"دلیل تأیید جزئی ادعا\",\n      \"confidence_percent\": 85\n    }\n  ],\n  \"unsupported_claims\": [\n    {\n      \"claim_path\": \"key_findings[0]\",\n      \"status\": \"partially_supported\",\n      \"reason\": \"بخشی از ادعا پشتوانه کافی ندارد\",\n      \"required_action\": \"ادعا را محدود کن یا شواهد بیشتری پیدا کن\",\n      \"search_queries\": [\n        \"جست‌وجوی پیشنهادی برای بررسی بیشتر\"\n      ],\n      \"confidence_percent\": 88\n    }\n  ],\n  \"revision_instructions\": [\n    \"منبع ردشده را دوباره بررسی کن\",\n    \"ادعاهای فاقد پشتوانه را اصلاح یا حذف کن\"\n  ],\n  \"review_notes\": [\n    \"توضیحات تکمیلی بازبین\"\n  ],\n  \"overall_confidence_percent\": 88\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -4400,
+        1216
+      ],
+      "id": "7fd986bf-54c0-4e64-968c-3ab6ee2f497f",
+      "name": "Review Output Parser"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================================\n// تصمیم بازبینی - حداکثر یک دور اصلاح\n// route = approved | revise | failed\n// در صورت رد دور دوم، فهرست موارد تأییدنشده همراه درصد اطمینان بازبین\n// برگردانده می‌شود؛ درصدها برآورد خود بازبین هستند، نه احتمال آماری کالیبره‌شده.\n// ============================================================\n\nfunction obj(value) {\n  if (value && typeof value === 'object' && !Array.isArray(value)) return value;\n  if (typeof value !== 'string') return {};\n  try {\n    const parsed = JSON.parse(value.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```$/i, '').trim());\n    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};\n  } catch { return {}; }\n}\nfunction arr(value) { return Array.isArray(value) ? value : []; }\nfunction str(value) { return value == null ? '' : String(value).trim(); }\nfunction id(value) { return str(value).toUpperCase(); }\nfunction pct(value) {\n  if (value === null || value === undefined || value === '') return null;\n  const n = Number(value);\n  if (!Number.isFinite(n) || n < 0 || n > 100) return null;\n  return Math.round(n);\n}\nfunction urlKey(value) {\n  try { const u = new URL(str(value)); u.hash = ''; return u.toString().replace(/\\/+$/, ''); }\n  catch { return ''; }\n}\nfunction getPackage() {\n  try { return $('Package Report for Review').item.json; }\n  catch {\n    try { return $('Package Report for Review').last().json; }\n    catch { throw new Error('بسته متناظر با گزارش و دور بازبینی پیدا نشد.'); }\n  }\n}\nfunction resolveTopic(report, path) {\n  if (path === 'executive_summary') return str(obj(report.executive_summary).text) || 'جمع‌بندی کلی';\n  const match = /^([a-z_]+)\\[(\\d+)\\]$/.exec(str(path));\n  if (!match) return str(path) || 'موضوع نامشخص';\n  const section = match[1];\n  const index = Number(match[2]);\n  const item = arr(report[section])[index] || {};\n  const titleBySection = {\n    scope_and_definitions: item.term || item.definition,\n    theoretical_framework: item.concept || item.explanation,\n    key_findings: item.finding || item.explanation,\n    evidence_review: item.source_id ? `ارزیابی منبع ${item.source_id}` : item.methodological_assessment,\n    contradictions: item.claim_or_issue || item.description,\n    examples: item.person_event || item.description,\n    interdisciplinary: item.domain || item.fact,\n    research_gaps: item.gap,\n    glossary: item.term || item.definition,\n    content_suggestions: item.title\n  };\n  return str(titleBySection[section]) || `${section}[${index}]`;\n}\nconst input = $input.first().json || {};\nconst review = obj(input.output ?? input);\nconst pack = getPackage();\nconst report = obj(pack.report);\nconst round = Number(pack.revision_round ?? 0);\nconst MAX_REVISIONS = 1; // فقط یک بار پژوهشگر برای اصلاح فراخوانی می‌شود.\n\nconst sources = arr(report.main_sources);\nconst sourceChecks = arr(review.source_checks);\nconst claimChecks = arr(review.claim_checks);\nconst rejectedSources = arr(review.rejected_sources);\nconst unsupportedClaims = arr(review.unsupported_claims);\nconst sourceIds = sources.map(s => id(s.source_id));\nconst sourceSet = new Set(sourceIds);\nconst uniqueIds = sourceIds.length === sourceSet.size;\n\nconst sourceMap = new Map();\nfor (const check of sourceChecks) {\n  const sid = id(check.source_id);\n  if (sid && !sourceMap.has(sid)) sourceMap.set(sid, check);\n}\nconst claimMap = new Map();\nfor (const check of claimChecks) {\n  const path = str(check.claim_path);\n  if (path && !claimMap.has(path)) claimMap.set(path, check);\n}\n\nconst allSourcesVerified = sources.length > 0 && uniqueIds &&\n  sourceChecks.length === sources.length &&\n  sources.every(source => {\n    const check = sourceMap.get(id(source.source_id));\n    return Boolean(check) && str(check.status).toLowerCase() === 'verified' &&\n      str(check.matched_title).length >= 5 && str(check.page_evidence).length >= 20;\n  });\n\nconst expected = [];\nfunction addCited(path, refs) {\n  expected.push({path, refs: arr(refs).map(id).filter(Boolean), url: '', urlBased: false});\n}\nfunction addURL(path, url) {\n  expected.push({path, refs: [], url: urlKey(url), urlBased: true});\n}\nconst summary = obj(report.executive_summary);\nif (str(summary.text)) addCited('executive_summary', summary.source_ids);\nfor (const [section, refsKey] of [\n  ['scope_and_definitions','source_ids'],['theoretical_framework','source_ids'],\n  ['key_findings','source_ids'],['contradictions','source_ids'],\n  ['research_gaps','source_ids'],['glossary','source_ids'],\n  ['content_suggestions','scientific_basis_source_ids']\n]) {\n  arr(report[section]).forEach((item, i) => addCited(`${section}[${i}]`, item[refsKey]));\n}\narr(report.evidence_review).forEach((item, i) => addCited(`evidence_review[${i}]`, [item.source_id]));\narr(report.examples).forEach((item, i) => addURL(`examples[${i}]`, item.source));\narr(report.interdisciplinary).forEach((item, i) => addURL(`interdisciplinary[${i}]`, item.source));\n\nfunction claimPass(claim) {\n  const check = claimMap.get(claim.path);\n  if (!check || str(check.status).toLowerCase() !== 'supported') return false;\n  if (claim.urlBased) {\n    const checkedUrls = arr(check.source_urls_checked).map(urlKey).filter(Boolean);\n    return Boolean(claim.url) && checkedUrls.includes(claim.url) && str(check.page_evidence).length >= 20;\n  }\n  if (claim.refs.length === 0) return false;\n  if (!claim.refs.every(sid => sourceSet.has(sid))) return false;\n  const checkedRefs = arr(check.source_ids_checked).map(id);\n  return claim.refs.every(sid => checkedRefs.includes(sid));\n}\nconst allExpectedClaimsChecked = expected.every(c => claimMap.has(c.path));\nconst allClaimsSupported = expected.every(claimPass);\n\nconst noScientificContent =\n  arr(report.scope_and_definitions).length === 0 && arr(report.theoretical_framework).length === 0 &&\n  arr(report.key_findings).length === 0 && arr(report.evidence_review).length === 0 &&\n  arr(report.contradictions).length === 0 && arr(report.examples).length === 0 &&\n  arr(report.interdisciplinary).length === 0 && arr(report.research_gaps).length === 0 &&\n  arr(report.glossary).length === 0 && arr(report.content_suggestions).length === 0;\nconst explicitNoEvidence = /(شواهد معتبر|منابع معتبر|رفرنس معتبر).{0,100}(پیدا نشد|یافت نشد|کافی نیست|قابل تأیید نیست|قابل اتکا نیست)|(پیدا نشد|یافت نشد|کافی نیست).{0,100}(شواهد|منابع|رفرنس)/i.test(str(summary.text));\nconst honestNoEvidence = sources.length === 0 && noScientificContent && explicitNoEvidence;\n\nif (str(report.topic_title) === 'تست اتصال') {\n  return [{json:{route:'approved',final_report:report,chat_id:pack.chat_id,research_id:pack.research_id,\n    revision_round:round,verified_source_count:0,quality_warnings:[],\n    verification_notice:'این خروجی صرفاً تست فنی است و ادعای علمی نیست.'}}];\n}\n\nconst reviewerAccepts = str(review.decision).toLowerCase() === 'accept' &&\n  str(review.review_status).toLowerCase() === 'pass';\nconst noExplicitRejections = rejectedSources.length === 0 && unsupportedClaims.length === 0;\nconst approved = (honestNoEvidence && reviewerAccepts && sourceChecks.length === 0 && noExplicitRejections) ||\n  (reviewerAccepts && allSourcesVerified && allExpectedClaimsChecked && allClaimsSupported && noExplicitRejections);\n\nif (approved) {\n  return [{json:{route:'approved',final_report:report,chat_id:pack.chat_id,research_id:pack.research_id,\n    brief:pack.brief,course_outline:pack.course_outline,revision_round:round,\n    verified_source_count:sources.length,quality_warnings:[],\n    verification_notice:'محتوای گزارش عیناً از خروجی پژوهشگر اصلی گرفته شده است؛ بازبین فقط درباره انتشار تصمیم‌گیری کرده است.'}}];\n}\n\nconst feedback = {\n  review_status: review.review_status || 'نامشخص', decision: review.decision || 'revise',\n  overall_confidence_percent: pct(review.overall_confidence_percent),\n  source_checks: sourceChecks, rejected_sources: rejectedSources,\n  claim_checks: claimChecks, unsupported_claims: unsupportedClaims,\n  revision_instructions: arr(review.revision_instructions), review_notes: arr(review.review_notes),\n  gate_checks: {all_sources_verified:allSourcesVerified,all_expected_claims_checked:allExpectedClaimsChecked,\n    all_claims_supported:allClaimsSupported,unique_source_ids:uniqueIds}\n};\n\n// اگر هنوز دور اصلاح مصرف نشده، دقیقاً یک بار به پژوهشگر اصلی برگرد.\nif (round < MAX_REVISIONS) {\n  return [{json:{route:'revise',chat_id:pack.chat_id,research_id:pack.research_id,\n    brief:pack.brief,course_outline:pack.course_outline,revision_round:round+1,is_revision:true,\n    previous_report:report,review_feedback:feedback,topic_title:report.topic_title}}];\n}\n\n// ------------------------------------------------------------\n// دور دوم بازبینی هم تأیید نکرد: فهرست موضوعات تأییدنشده بساز.\n// confidence_percent یعنی اطمینان بازبین به ارزیابیِ عدم تأیید، نه احتمال غلط بودن ادعا.\n// ------------------------------------------------------------\nconst issues = new Map();\nfunction addIssue(key, issue) {\n  const safeKey = str(key) || `issue_${issues.size+1}`;\n  const existing = issues.get(safeKey);\n  if (!existing) {\n    issues.set(safeKey, issue);\n  } else {\n    if ((!existing.reason || existing.reason.length < str(issue.reason).length) && issue.reason) existing.reason = issue.reason;\n    if (issue.confidence_percent != null) existing.confidence_percent = issue.confidence_percent;\n    if (issue.confidence_note) existing.confidence_note = issue.confidence_note;\n    if (issue.status) existing.status = issue.status;\n    if (issue.recommendation) existing.recommendation = issue.recommendation;\n  }\n}\n\nfor (const source of sources) {\n  const sid = id(source.source_id);\n  const check = sourceMap.get(sid);\n  const explicitlyRejected = rejectedSources.find(r => id(r.source_id) === sid);\n  const sourceVerified = Boolean(check) &&\n    str(check.status).toLowerCase() === 'verified' &&\n    str(check.matched_title).length >= 5 &&\n    str(check.page_evidence).length >= 20 &&\n    !explicitlyRejected;\n\n  if (!sourceVerified) {\n    const reason = str(explicitlyRejected?.reason || check?.reason) ||\n      'منبع در خروجی بازبینی مستقل به‌طور کامل تأیید نشد.';\n    const conf = pct(explicitlyRejected?.confidence_percent ?? check?.confidence_percent);\n    addIssue(`source:${sid}`, {\n      type:'source', topic:str(source.name) || `منبع ${sid || 'بدون شناسه'}`,\n      claim_path:'', source_id:sid || '', status:str(check?.status || 'not_reviewed'),\n      reason, confidence_percent: conf,\n      confidence_note: conf == null ? 'بازبین درصد اطمینان معتبری برای این مورد ارائه نکرد؛ درصدی حدس زده نشده است.' : '',\n      recommendation:str(explicitlyRejected?.required_action) || 'مشخصات و صفحه رسمی منبع را دوباره بررسی کن.'\n    });\n  }\n}\n\nif (!uniqueIds) {\n  addIssue('source_id_integrity', {\n    type:'source', topic:'یکتایی شناسه‌های منابع', claim_path:'', source_id:'',\n    status:'metadata_mismatch',\n    reason:'در فهرست منابع شناسه تکراری وجود دارد؛ بنابراین ارجاع‌ها به‌صورت یکتا قابل ردیابی نیستند.',\n    confidence_percent:100,\n    confidence_note:'این درصد به اطمینان از مشاهده شناسه‌های تکراری در ساختار گزارش اشاره دارد، نه درباره محتوای علمی.',\n    recommendation:'برای هر منبع شناسه یکتا تعیین کن و تمام source_ids وابسته را مطابق آن اصلاح کن.'\n  });\n}\n\nconst unsupportedMap = new Map();\nfor (const item of unsupportedClaims) {\n  const path = str(item.claim_path);\n  if (path && !unsupportedMap.has(path)) unsupportedMap.set(path,item);\n}\n\nfor (const claim of expected) {\n  const check = claimMap.get(claim.path);\n  const supported = claimPass(claim);\n  if (!supported) {\n    const explicit = unsupportedMap.get(claim.path);\n    const reviewerStatus = str(check?.status).toLowerCase();\n    const structuralFailure = Boolean(check) && reviewerStatus === 'supported';\n    let reason = structuralFailure ? '' : str(explicit?.reason || check?.reason);\n    if (structuralFailure) {\n      if (!claim.urlBased && claim.refs.length === 0) {\n        reason = 'بازبین ادعا را پشتیبانی‌شده اعلام کرده، اما این بخش هیچ ارجاعی به منبع ندارد؛ از نظر ساختاری قابل تأیید نیست.';\n      } else {\n        reason = 'بازبین ادعا را پشتیبانی‌شده اعلام کرده، اما ارجاعات یا شواهد قابل ردیابی آن با الزامات کنترل نهایی سازگار نیستند.';\n      }\n    }\n    if (!reason) {\n      if (!check) reason = 'بازبین برای این بخش نتیجه بررسی ثبت نکرده است؛ بنابراین تأیید آن قابل اثبات نیست.';\n      else if (!claim.urlBased && claim.refs.length === 0) reason = 'این بخش ارجاع به منبع تأییدشده ندارد.';\n      else reason = 'شواهد بررسی‌شده برای تأیید کامل این بخش کافی نیست.';\n    }\n    const status = str(explicit?.status || check?.status || 'not_verifiable');\n    const conf = structuralFailure ? 100 : pct(explicit?.confidence_percent ?? check?.confidence_percent);\n    addIssue(`claim:${claim.path}`, {\n      type:'topic', topic:resolveTopic(report, claim.path),\n      claim_path:claim.path, source_id:'', status, reason,\n      confidence_percent: structuralFailure ? 100 : conf,\n      confidence_note: structuralFailure\n        ? '۱۰۰٪ اطمینان به این است که کنترل ساختاری ارجاعات در این اجرا شکست خورده؛ نه احتمال نادرستی علمی ادعا.'\n        : (conf == null ? 'بازبین درصد اطمینان معتبری ارائه نکرد؛ درصدی حدس زده نشده است.' : ''),\n      recommendation:str(explicit?.required_action) || 'ادعا را اصلاح یا محدود کن و برای آن شواهد معتبر و مستقیم ارائه بده.'\n    });\n  }\n}\n\n// مواردی که بازبین صریحاً در unsupported_claims آورده است، حتی اگر ساختار موردانتظار کامل نبوده باشد.\nfor (const item of unsupportedClaims) {\n  const path = str(item.claim_path);\n  if (!path) continue;\n  addIssue(`claim:${path}`, {\n    type:'topic', topic:resolveTopic(report,path), claim_path:path, source_id:'',\n    status:str(item.status || 'not_verifiable'), reason:str(item.reason || 'پشتیبانی کافی تأیید نشده است.'),\n    confidence_percent:pct(item.confidence_percent),\n    confidence_note:pct(item.confidence_percent) == null ? 'بازبین درصد اطمینان معتبری ارائه نکرد؛ درصدی حدس زده نشده است.' : '',\n    recommendation:str(item.required_action) || 'شواهد را تکمیل یا ادعا را محدود کن.'\n  });\n}\n\nlet unapprovedTopics = [...issues.values()];\nif (unapprovedTopics.length === 0) {\n  const notes = arr(review.review_notes).map(str).filter(Boolean);\n  const overall = pct(review.overall_confidence_percent);\n  unapprovedTopics.push({\n    type:'report', topic:'پذیرش کلی گزارش', claim_path:'', source_id:'',\n    status:str(review.review_status || 'partial'),\n    reason:notes.join(' | ') || 'بازبین در دور دوم گزارش را تأیید نکرد؛ اما دلیل هر مورد به‌صورت جداگانه در خروجی مشخص نشده است.',\n    confidence_percent:overall,\n    confidence_note:overall == null ? 'بازبین درصد اطمینان کلی معتبری ارائه نکرد.' : '',\n    recommendation:'خروجی بازبین و موارد بازبینی‌نشده را دستی بررسی کن.'\n  });\n}\n\nunapprovedTopics = unapprovedTopics.map(item => ({\n  ...item,\n  confidence_percent:pct(item.confidence_percent)\n}));\n\nreturn [{json:{route:'failed',chat_id:pack.chat_id,research_id:pack.research_id,\n  topic_title:report.topic_title,revision_round:round,\n  final_report:report,\n  unapproved_topics:unapprovedTopics,\n  overall_confidence_percent:pct(review.overall_confidence_percent),\n  quality_warnings:[\n    'یک دور اصلاح انجام شد، اما گزارش پس از بازبینی دوم به‌طور کامل تأیید نشد.',\n    'گزارش زیر آخرین خروجی پژوهشگر اصلی است و نباید همه بخش‌های آن تأییدشده تلقی شوند.',\n    'درصدها برآورد بازبین از اطمینان به ارزیابیِ عدم تأیید هستند؛ نه احتمال آماریِ نادرست بودن ادعا.'\n  ],\n  verification_notice:'آخرین گزارش پژوهشگر اصلی همراه با فهرست مواردی که پس از یک بار اصلاح تأیید نشدند، ارائه می‌شود.'\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4224,
+        1024
+      ],
+      "id": "57e86c84-f943-4239-8ed6-87333ab11845",
+      "name": "Review Decision"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{$json.route}}",
+                    "rightValue": "approved",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "b8b661e2-9fcb-41da-a348-a379f5773bbd"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "96a2bac7-f86c-453f-95ac-99bcc0edf8f0",
+                    "leftValue": "={{$json.route}}",
+                    "rightValue": "revise",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8473194d-6382-4e03-81cd-d3e7ce34fe0f",
+                    "leftValue": "={{$json.route}}",
+                    "rightValue": "failed",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -4016,
+        1008
+      ],
+      "id": "91879c9f-1174-4ce3-826e-a044518a7e28",
+      "name": "Route by Review"
+    },
+    {
+      "parameters": {
+        "jsCode": "const d = $input.first().json || {};\n\nconst report = d.final_report && typeof d.final_report === 'object' && !Array.isArray(d.final_report)\n  ? d.final_report\n  : {};\n\nreturn [{\n  json: {\n    // Preserve all research fields from the last output of the first agent.\n    ...report,\n\n    chat_id: d.chat_id,\n    research_id: d.research_id,\n    topic_title: d.topic_title || report.topic_title || 'تحقیق',\n\n    // These fields control presentation only; they do not replace the report.\n    review_status: 'fail',\n    is_technical_test: false,\n\n    // Count sources in the report separately from verified sources.\n    reported_source_count: Array.isArray(report.main_sources) ? report.main_sources.length : 0,\n    verified_source_count: 0,\n    dropped_sources_count: 0,\n    dropped_claims_count: 0,\n\n    unapproved_topics: Array.isArray(d.unapproved_topics)\n      ? d.unapproved_topics\n      : [],\n\n    overall_confidence_percent: d.overall_confidence_percent ?? null,\n\n    quality_warnings: Array.isArray(d.quality_warnings)\n      ? d.quality_warnings\n      : ['پس از یک دور اصلاح، بعضی منابع یا ادعاها تأیید نهایی نشدند.'],\n\n    verification_notice:\n      d.verification_notice ||\n      'گزارش پژوهشگر اصلی به همراه موارد تأییدنشده در ادامه آمده است.'\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4032,
+        768
+      ],
+      "id": "7b7cdf6c-78a0-4d1e-b08f-828fd45f8694",
+      "name": "Build Unapproved Report"
+    }
+  ],
+  "connections": {
+    "Research Request Trigger": {
+      "main": [
+        [
+          {
+            "node": "Prepare Research Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Research Context": {
+      "main": [
+        [
+          {
+            "node": "Researcher Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Researcher LLM (Web Search)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Main Researcher",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Research Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Main Researcher",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apply Evidence Gate": {
+      "main": [
+        [
+          {
+            "node": "Format Bale Messages",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Split Evidence Rows",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Save Research",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Update Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Bale Messages": {
+      "main": [
+        [
+          {
+            "node": "Send Messages Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Messages Loop": {
+      "main": [
+        [
+          {
+            "node": "Messages Sent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Bale Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Evidence Rows": {
+      "main": [
+        [
+          {
+            "node": "Save Evidence",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Bale Message": {
+      "main": [
+        [
+          {
+            "node": "Send Messages Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reviewer LLM (Web Search)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Independent Source Reviewer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Main Researcher": {
+      "main": [
+        [
+          {
+            "node": "Package Report for Review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Independent Source Reviewer": {
+      "main": [
+        [
+          {
+            "node": "Review Decision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Researcher Input": {
+      "main": [
+        [
+          {
+            "node": "Main Researcher",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Package Report for Review": {
+      "main": [
+        [
+          {
+            "node": "Independent Source Reviewer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Review Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Independent Source Reviewer",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Review Decision": {
+      "main": [
+        [
+          {
+            "node": "Route by Review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Review": {
+      "main": [
+        [
+          {
+            "node": "Apply Evidence Gate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Researcher Input",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build Unapproved Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Unapproved Report": {
+      "main": [
+        [
+          {
+            "node": "Format Bale Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": true
+  },
+  "nodeGroups": [],
+  "tags": []
+}
