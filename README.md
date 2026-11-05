@@ -1,3 +1,79 @@
+# Content Machine
+
+An n8n workflow that automates the creation of SEO-focused articles with AI, generates supporting images, and saves the finished article as a draft in WordPress.
+
+## Features
+
+1. Retrieves an unpublished content request from Google Sheets.
+2. Creates an SEO strategy, including keywords, search intent, audience pain points, and an article outline.
+3. Writes the article in WordPress-ready HTML.
+4. Generates four English image prompts: one featured image and three in-article images.
+5. Generates the four images using OpenAI image generation.
+6. Uploads the images to the WordPress media library.
+7. Inserts the images into the article and creates a WordPress post with `draft` status.
+8. Updates the corresponding Google Sheets row to mark it as processed.
+
+## Workflow File
+
+Import this file into n8n:
+
+`workflow/ماشین-محتوا.json`
+
+## Requirements
+
+- An n8n instance with the node types used in this workflow available.
+- A Google account with access to Google Sheets.
+- An OpenAI account and API access to the models selected in the workflow.
+- A WordPress website with REST API access and credentials that can upload media and create posts.
+- A Google spreadsheet with the columns listed below.
+
+## Google Sheets Structure
+
+The workflow expects the following columns:
+
+| Column | Purpose |
+|---|---|
+| `id` | Row identifier used when updating the row. |
+| `is published` | Selects unprocessed rows. Expected value: `No`; changed to `Yes` after processing. |
+| `موضوع` | Article topic. |
+| `مخاطب هدف مقاله` | Target audience. |
+| `لحن` | Desired writing tone. |
+| `طول محتوا` | Requested article length. |
+| `کال تو اکشن` | Call to action to include in the article. |
+| `زبان انتشار` | Article language. |
+| `رنگ سازمانی` | Brand color to include in the image prompts. |
+
+The spreadsheet ID and sheet selection must be configured in the Google Sheets nodes in n8n.
+
+## Setup
+
+1. In n8n, open **Workflows** and select **Import from File**.
+2. Import `workflow/ماشین-محتوا.json`.
+3. Open both Google Sheets nodes, select your Google Sheets credentials, and configure your spreadsheet and sheet.
+4. Open the OpenAI and language-model nodes and select your own OpenAI credentials.
+5. In the WordPress HTTP Request nodes, replace `https://YOUR_WORDPRESS_DOMAIN` with your WordPress site's base URL and select your WordPress credentials.
+6. Run a test using a sample spreadsheet row. Check the generated article, images, and WordPress draft before activating the workflow.
+7. Activate the workflow only after the test succeeds.
+
+## Important Notes
+
+- The Schedule Trigger is currently configured to run every minute.
+- Each run looks for the first row where `is published` is set to `No`.
+- Posts are created with `draft` status. The workflow does not publish articles publicly.
+- After a post is created, the corresponding spreadsheet row is updated to `Yes`.
+- Node types, model selections, and node versions are based on the exported workflow. Depending on your n8n version, some settings may need adjustment.
+
+## Security
+
+This repository version has been prepared for sharing by removing n8n credential references and replacing the spreadsheet ID and WordPress domain with placeholders.
+
+- Never commit API keys, passwords, access tokens, customer data, or an unredacted n8n export.
+- Store and manage credentials inside n8n's **Credentials** section.
+- If a real secret has ever been committed to a public repository, revoke or rotate it immediately. Deleting the file does not remove the secret from Git history.
+
+
+
+
 # ماشین محتوا
 
 ورکفلو n8n برای ساخت محتوای مقاله با کمک هوش مصنوعی، از مرحله تدوین استراتژی سئو تا تولید تصویر و ایجاد پیش‌نویس در وردپرس.
