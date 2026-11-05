@@ -1,0 +1,1002 @@
+{
+  "name": "ماشین محتوا",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -1696,
+        448
+      ],
+      "id": "2dba0a78-383f-43d3-a928-c5c9413125de",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Your Google Sheets document",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 195936165,
+          "mode": "list",
+          "cachedResultName": "Your worksheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=YOUR_SHEET_GID"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "is published",
+              "lookupValue": "No"
+            }
+          ]
+        },
+        "options": {
+          "returnFirstMatch": true
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1488,
+        448
+      ],
+      "id": "afaa5407-52ed-4a56-a288-e7551296733b",
+      "name": "Get row(s) in sheet",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Please create an SEO strategy for the following topic.\n\nTopic:\n{{ $json[\"موضوع\"] }}\n\nTarget Audience:\n{{ $json[\"مخاطب هدف مقاله\"] }}\n\nTone of Voice:\n{{ $json[\"لحن\"] }}\n\nContent Length:\n{{ $json[\"طول محتوا\"] }}\n\nCall to Action (CTA) to include in the strategy:\n{{ $json[\"کال تو اکشن\"] }}\n\nLanguage:\n{{ $json[\"زبان انتشار\"] }}",
+        "options": {
+          "systemMessage": "شما یک استراتژیست ارشد سئو هستید.\n\nوظیفه شما **نوشتن مقاله نیست**.\nوظیفه شما فقط **تدوین استراتژی سئو برای موضوع ارائه‌شده** است.\n\nشما باید موضوع را تحلیل کرده و دقیقاً بر اساس ساختار JSON زیر خروجی دهید. \n\nقوانین مهم:\n* به هیچ وجه مقاله ننویسید.\n* تمرکز شما باید بر بیشترین پتانسیل رتبه‌گیری در موتورهای جستجو باشد.\n* ساختار هدینگ‌ها باید منطقی، منظم و متناسب با هدف جستجوی کاربر باشد.\n* خروجی فقط و فقط باید به صورت JSON معتبر (Valid JSON) باشد.\n* هیچ توضیح، مقدمه، نتیجه‌گیری یا متن اضافی خارج از ساختار JSON ارائه نکنید.\n\nYour output MUST be in the exact following JSON format:\n{\n  \"main_keyword\": \"...\",\n  \"secondary_keywords\": [\"...\", \"...\"],\n  \"semantic_keywords\": [\"...\", \"...\"],\n  \"search_intent\": \"...\",\n  \"audience_pain_points\": [\"...\", \"...\"],\n  \"meta_tags\": {\n    \"suggested_title\": \"...\",\n    \"meta_description\": \"...\"\n  },\n  \"seo_outline\": [\n    {\n      \"heading_level\": \"H2\",\n      \"heading_title\": \"...\",\n      \"purpose\": \"...\"\n    }\n  ]\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -1280,
+        448
+      ],
+      "id": "3f71ef23-fc87-45f8-864c-7ca34dd3170f",
+      "name": "SEO Strategy",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=لطفاً مقاله را بر اساس اطلاعات و استراتژی زیر به زبان {{ $('Get row(s) in sheet').item.json['زبان انتشار'] }} بنویسید:\n\n--- اطلاعات کلی پروژه ---\nموضوع مقاله (Topic): {{ $('Get row(s) in sheet').item.json['موضوع'] }}\nمخاطب هدف: {{ $('Get row(s) in sheet').item.json['مخاطب هدف مقاله'] }}\nلحن محتوا: {{ $('Get row(s) in sheet').item.json['لحن'] }}\nطول محتوا: {{ $('Get row(s) in sheet').item.json['طول محتوا'] }}\nکال تو اکشن (CTA - حتما در انتهای مقاله استفاده شود): {{ $('Get row(s) in sheet').item.json['کال تو اکشن'] }}\n\n--- استراتژی سئو (خروجی ایجنت اول) ---\nکلمه کلیدی اصلی: \nکلمات کلیدی فرعی و معنایی: {{ $json[\"secondary_keywords\"] }}, {{ $json[\"semantic_keywords\"] }}\nهدف جستجو (Search Intent): {{ $json[\"search_intent\"] }}\nدغدغه‌های مخاطب که باید در متن به آن‌ها پاسخ داده شود: {{ $json[\"audience_pain_points\"] }}\n\nساختار مقاله (SEO Outline - حتما رعایت شود):\n{{ JSON.stringify($json[\"seo_outline\"]) }}",
+        "options": {
+          "systemMessage": "شما یک نویسنده حرفه‌ای محتوا و متخصص ارشد کپی‌رایتینگ و سئو هستید.\n\nوظیفه شما تولید یک مقاله کامل، جذاب و سئوشده بر اساس «استراتژی سئو» و «اطلاعات اولیه» ارائه‌شده است.\n\nقوانین محتوایی:\n* مقاله باید کاملاً بر اساس ساختار (SEO Outline) ارائه‌شده تولید شود. از ایجاد هدینگ‌های جدید خارج از ساختار خودداری کنید.\n* متن باید روان، طبیعی و انسانی باشد.\n* از جملات کلیشه‌ای مانند (در این مقاله قصد داریم، همانطور که می‌دانید، امروزه...) اکیداً استفاده نکنید.\n* پاراگراف‌ها را کوتاه نگه دارید (حداکثر ۳-۴ خط).\n* در صورت نیاز از لیست‌های نقطه‌ای (Bullet points) و جدول برای خوانایی بهتر استفاده کنید.\n* از تکرار مصنوعی کلمات کلیدی (Keyword Stuffing) بپرهیزید؛ محتوا باید برای انسان نوشته شود نه موتور جستجو.\n* حتماً Call to Action (اقدام به عمل) خواسته شده را در انتهای مقاله به شکلی جذاب ادغام کنید.\n\nقوانین فنی (بسیار مهم):\n* محتوای مقاله باید با تگ‌های استاندارد HTML (مثل <h2>, <h3>, <p>, <ul>, <li>, <strong>) فرمت‌دهی شود تا برای انتشار مستقیم در وردپرس آماده باشد.\n* خروجی شما باید فقط و فقط یک JSON معتبر باشد. هیچ متن اضافه‌ای خارج از ساختار JSON ارائه نکنید.\n\nYour output MUST be in the exact following JSON format:\n{\n  \"article_title\": \"...\",\n  \"article_html_content\": \"...\"\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -784,
+        688
+      ],
+      "id": "4d98fdfb-49b8-42bf-b951-481f1e7fdeaf",
+      "name": "Writer"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=لطفاً ۴ پرامپت حرفه‌ای به زبان انگلیسی برای این مقاله بنویسید:\n۱. تصویر شاخص (Feature Image)\n۲. سه تصویر برای بین متن\n\n--- اطلاعات مقاله ---\nموضوع: {{ $('Get row(s) in sheet').item.json['موضوع'] }}\nکلمه کلیدی اصلی: {{ $json.main_keyword }}\nساختار مقاله: {{ JSON.stringify($json[\"seo_outline\"]) }}\n\nرنگ سازمانی (در پرامپت‌ها لحاظ شود): {{ $('Get row(s) in sheet').item.json['رنگ سازمانی'] }}",
+        "options": {
+          "systemMessage": "شما یک متخصص طراحی پرامپت تصویر (AI Prompt Engineer) هستید.\nوظیفه شما این است که بر اساس موضوع مقاله و کلمات کلیدی، ۴ پرامپت انگلیسی بسیار حرفه‌ای برای تولید تصویر بنویسید.\n\nقوانین:\n* پرامپت‌ها باید شامل نورپردازی، زاویه دوربین، سبک عکاسی و جزئیات دقیق باشند.\n* خروجی شما باید فقط یک JSON معتبر باشد و هیچ متن اضافه‌ای نداشته باشد.\n\nYour output MUST be in the exact following JSON format:\n{\n  \"feature_prompt\": \"English prompt for the main feature image...\",\n  \"inline_prompt_1\": \"English prompt for the first inline image...\",\n  \"inline_prompt_2\": \"English prompt for the second inline image...\",\n  \"inline_prompt_3\": \"English prompt for the third inline image...\"\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -784,
+        208
+      ],
+      "id": "6593e6ac-1e75-463b-9b8e-6319595c09f5",
+      "name": "Image Prompt Engineer",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "numberInputs": 5
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        816,
+        576
+      ],
+      "id": "f647fc9e-2813-4aa1-901f-0d7018e08207",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "jsCode": "// گرفتن تمام دیتاهای ورودی از نود Merge\nlet allData = $input.all();\n\n// ۱. دریافت اطلاعات ۴ تصویر به ترتیب (ایندکس ۰ تا ۳)\nlet featureImageId = allData[0].json.id; \nlet img1Url = allData[1].json.source_url;\nlet img2Url = allData[2].json.source_url;\nlet img3Url = allData[3].json.source_url;\n\n// ۲. دریافت متن مقاله از آیتم پنجم (ایندکس ۴)\nlet rawOutput = allData[4].json.output;\nlet parsedArticle = JSON.parse(rawOutput);\nlet articleHtml = parsedArticle.article_html_content;\nlet articleTitle = parsedArticle.article_title;\n\n// ۳. ساخت تگ‌های HTML با لینک‌های واقعی و استایل ریسپانسیو\nlet imgTag1 = `<img src=\"${img1Url}\" alt=\"تصویر مرتبط با مقاله\" style=\"width:100%; height:auto; border-radius:10px; margin:25px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1);\">`;\nlet imgTag2 = `<img src=\"${img2Url}\" alt=\"ادامه مقاله\" style=\"width:100%; height:auto; border-radius:10px; margin:25px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1);\">`;\nlet imgTag3 = `<img src=\"${img3Url}\" alt=\"بخش پایانی مقاله\" style=\"width:100%; height:auto; border-radius:10px; margin:25px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1);\">`;\n\n// --- ۴. عملیات جاگذاری تصاویر در متن ---\n\n// جاگذاری تصویر اول: دقیقاً بعد از اولین پاراگراف\narticleHtml = articleHtml.replace('</p>', '</p>\\n' + imgTag1);\n\n// جاگذاری تصویر سوم: دقیقاً قبل از پاراگراف آخر\nlet lastPIndex = articleHtml.lastIndexOf('<p>');\nif (lastPIndex !== -1) {\n    articleHtml = articleHtml.substring(0, lastPIndex) + imgTag3 + '\\n' + articleHtml.substring(lastPIndex);\n}\n\n// جاگذاری تصویر دوم: دقیقاً قبل از هدینگ میانی\nlet h2Parts = articleHtml.split('<h2>');\nif (h2Parts.length > 2) {\n    let middleIndex = Math.floor(h2Parts.length / 2);\n    let beforeMiddle = h2Parts.slice(0, middleIndex).join('<h2>');\n    let afterMiddle = h2Parts.slice(middleIndex).join('<h2>');\n    articleHtml = beforeMiddle + imgTag2 + '\\n<h2>' + afterMiddle;\n}\n\n// ۵. خروجی نهایی، آماده برای نود وردپرس\nreturn {\n    json: {\n        title: articleTitle,\n        content: articleHtml,\n        featured_media: featureImageId,\n        status: \"draft\" \n    }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        624
+      ],
+      "id": "35b77493-e108-4466-b1f8-85418f0bf6da",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(item => {\n  // گرفتن دیتای متنی و شلوغ از فیلد output\n  let rawTextData = item.json.output;\n  \n  try {\n    // تبدیل متن به یک ساختار تمیز و واقعی JSON\n    let cleanJsonData = JSON.parse(rawTextData);\n    \n    // جایگزین کردن دیتای خروجی با دیتای مرتب‌شده\n    return { json: cleanJsonData };\n    \n  } catch (error) {\n    // در صورتی که ساختار خروجی ایجنت مشکل داشته باشد\n    return { \n      json: { \n        error: \"خطا در تبدیل متن به JSON\", \n        details: error.message,\n        original_data: rawTextData\n      } \n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -944,
+        208
+      ],
+      "id": "470aa78d-d065-460e-b855-cb5e9253268e",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "o3-mini",
+          "mode": "list",
+          "cachedResultName": "o3-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -784,
+        384
+      ],
+      "id": "98364510-d09a-4dd4-a2bf-1c0690d127d8",
+      "name": "OpenAI Chat Model2"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(item => {\n  // گرفتن دیتای متنی از فیلد output\n  let rawTextData = item.json.output;\n  \n  try {\n    // تبدیل متن (String) به یک آبجکت واقعی و ساختاریافته (JSON)\n    let parsedPrompts = JSON.parse(rawTextData);\n    \n    // جایگزین کردن دیتای خروجی با دیتای مرتب‌شده\n    return { json: parsedPrompts };\n    \n  } catch (error) {\n    // مدیریت خطا در صورتی که ایجنت فرمت JSON را اشتباه تولید کرده باشد\n    return { \n      json: { \n        error: \"خطا در تبدیل متن به JSON\", \n        details: error.message,\n        original_data: rawTextData\n      } \n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -496,
+        208
+      ],
+      "id": "cc83e879-c87e-4d9b-850b-4c163099ca94",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-image-2-2026-04-21",
+          "mode": "list",
+          "cachedResultName": "GPT-IMAGE-2-2026-04-21"
+        },
+        "prompt": "={{ $json.inline_prompt_1 }}",
+        "options": {
+          "quality": "low",
+          "size": "1024x1024"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        -240,
+        128
+      ],
+      "id": "b54f7805-367a-4a4e-a55c-6676876535fc",
+      "name": "Generate image 1"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-image-2-2026-04-21",
+          "mode": "list",
+          "cachedResultName": "GPT-IMAGE-2-2026-04-21"
+        },
+        "prompt": "={{ $json.feature_prompt }}",
+        "options": {
+          "quality": "low",
+          "size": "1024x1024"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        -240,
+        -16
+      ],
+      "id": "51dbf0ab-4151-4faf-a626-a01f3c9c6750",
+      "name": "Generate feature image"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-image-2-2026-04-21",
+          "mode": "list",
+          "cachedResultName": "GPT-IMAGE-2-2026-04-21"
+        },
+        "prompt": "={{ $json.inline_prompt_2 }}",
+        "options": {
+          "quality": "low",
+          "size": "1024x1024"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        -240,
+        272
+      ],
+      "id": "01e1fe3c-515a-47d7-8365-82116fae6e43",
+      "name": "Generate image 2"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-image-2-2026-04-21",
+          "mode": "list",
+          "cachedResultName": "GPT-IMAGE-2-2026-04-21"
+        },
+        "prompt": "={{ $json.inline_prompt_3 }}",
+        "options": {
+          "quality": "low",
+          "size": "1024x1024"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        -240,
+        416
+      ],
+      "id": "d6d91969-398a-4d0e-841b-717a5af0bc53",
+      "name": "Generate image 3"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list",
+          "cachedResultName": "gpt-3.5-turbo"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -1280,
+        640
+      ],
+      "id": "326b43b0-6f7e-43eb-b697-d0753f90a84a",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "o3-mini",
+          "mode": "list",
+          "cachedResultName": "o3-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -784,
+        880
+      ],
+      "id": "14b3ba9f-36a9-437b-a90c-feda8c9b44a6",
+      "name": "OpenAI Chat Model3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://YOUR_WORDPRESS_DOMAIN/wp-json/wp/v2/media",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        176,
+        -16
+      ],
+      "id": "545a5f44-ee71-4a76-8927-41a44cc3d6bc",
+      "name": "HTTP Request1",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// ۱. دریافت فایل باینری از ورودی\nlet binaryData = $input.item.binary.data;\n\n// ۲. تولید یک شناسه کاملاً یکتا\n// Date.now() زمان فعلی را به میلی‌ثانیه می‌دهد\n// Math.random() یک عدد تصادفی تولید می‌کند تا احتمال تکرار به صفر برسد\nlet timestamp = Date.now();\nlet randomNum = Math.floor(Math.random() * 10000);\n\n// ۳. ساخت نام جدید و منحصر به فرد (مثال خروجی: ai_image_1698765432100_8472.png)\nlet uniqueFileName = `ai_image_${timestamp}_${randomNum}.png`;\n\n// ۴. اصلاح نام فایل و اضافه کردن پسوند\nbinaryData.fileName = uniqueFileName;\n\n// ۵. ارسال دیتای اصلاح‌شده به نود بعدی\nreturn {\n  json: $input.item.json,\n  binary: {\n    data: binaryData\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -32,
+        -16
+      ],
+      "id": "92145a4c-4df6-476a-9f63-a6c4086cc4c7",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://YOUR_WORDPRESS_DOMAIN/wp-json/wp/v2/media",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        176,
+        128
+      ],
+      "id": "9d2b9143-15da-4701-9318-3eeee1ef0b66",
+      "name": "HTTP Request2",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// ۱. دریافت فایل باینری از ورودی\nlet binaryData = $input.item.binary.data;\n\n// ۲. تولید یک شناسه کاملاً یکتا\n// Date.now() زمان فعلی را به میلی‌ثانیه می‌دهد\n// Math.random() یک عدد تصادفی تولید می‌کند تا احتمال تکرار به صفر برسد\nlet timestamp = Date.now();\nlet randomNum = Math.floor(Math.random() * 10000);\n\n// ۳. ساخت نام جدید و منحصر به فرد (مثال خروجی: ai_image_1698765432100_8472.png)\nlet uniqueFileName = `ai_image_${timestamp}_${randomNum}.png`;\n\n// ۴. اصلاح نام فایل و اضافه کردن پسوند\nbinaryData.fileName = uniqueFileName;\n\n// ۵. ارسال دیتای اصلاح‌شده به نود بعدی\nreturn {\n  json: $input.item.json,\n  binary: {\n    data: binaryData\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -32,
+        128
+      ],
+      "id": "86bb6a77-c70a-4abc-9da0-3039859c8bde",
+      "name": "Code in JavaScript4"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://YOUR_WORDPRESS_DOMAIN/wp-json/wp/v2/media",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        176,
+        272
+      ],
+      "id": "32f10d8c-f57e-40e6-bd0c-f28af2f8615b",
+      "name": "HTTP Request3",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// ۱. دریافت فایل باینری از ورودی\nlet binaryData = $input.item.binary.data;\n\n// ۲. تولید یک شناسه کاملاً یکتا\n// Date.now() زمان فعلی را به میلی‌ثانیه می‌دهد\n// Math.random() یک عدد تصادفی تولید می‌کند تا احتمال تکرار به صفر برسد\nlet timestamp = Date.now();\nlet randomNum = Math.floor(Math.random() * 10000);\n\n// ۳. ساخت نام جدید و منحصر به فرد (مثال خروجی: ai_image_1698765432100_8472.png)\nlet uniqueFileName = `ai_image_${timestamp}_${randomNum}.png`;\n\n// ۴. اصلاح نام فایل و اضافه کردن پسوند\nbinaryData.fileName = uniqueFileName;\n\n// ۵. ارسال دیتای اصلاح‌شده به نود بعدی\nreturn {\n  json: $input.item.json,\n  binary: {\n    data: binaryData\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -32,
+        272
+      ],
+      "id": "e9dcde4d-3540-4380-a982-12b6303069db",
+      "name": "Code in JavaScript5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://YOUR_WORDPRESS_DOMAIN/wp-json/wp/v2/media",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        176,
+        416
+      ],
+      "id": "a2be5601-3d5f-42bd-bdf8-f4ac57eb45a8",
+      "name": "HTTP Request4",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// ۱. دریافت فایل باینری از ورودی\nlet binaryData = $input.item.binary.data;\n\n// ۲. تولید یک شناسه کاملاً یکتا\n// Date.now() زمان فعلی را به میلی‌ثانیه می‌دهد\n// Math.random() یک عدد تصادفی تولید می‌کند تا احتمال تکرار به صفر برسد\nlet timestamp = Date.now();\nlet randomNum = Math.floor(Math.random() * 10000);\n\n// ۳. ساخت نام جدید و منحصر به فرد (مثال خروجی: ai_image_1698765432100_8472.png)\nlet uniqueFileName = `ai_image_${timestamp}_${randomNum}.png`;\n\n// ۴. اصلاح نام فایل و اضافه کردن پسوند\nbinaryData.fileName = uniqueFileName;\n\n// ۵. ارسال دیتای اصلاح‌شده به نود بعدی\nreturn {\n  json: $input.item.json,\n  binary: {\n    data: binaryData\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -32,
+        416
+      ],
+      "id": "a7636f67-e192-4fd2-99c6-901273a4a424",
+      "name": "Code in JavaScript6"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(item => {\n  // گرفتن دیتای متنی و شلوغ از فیلد output\n  let rawTextData = item.json.output;\n  \n  try {\n    // تبدیل متن به یک ساختار تمیز و واقعی JSON\n    let cleanJsonData = JSON.parse(rawTextData);\n    \n    // جایگزین کردن دیتای خروجی با دیتای مرتب‌شده\n    return { json: cleanJsonData };\n    \n  } catch (error) {\n    // در صورتی که ساختار خروجی ایجنت مشکل داشته باشد\n    return { \n      json: { \n        error: \"خطا در تبدیل متن به JSON\", \n        details: error.message,\n        original_data: rawTextData\n      } \n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -944,
+        688
+      ],
+      "id": "9a653a84-478c-4002-bd9b-9d71835fa851",
+      "name": "Code in JavaScript7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://YOUR_WORDPRESS_DOMAIN/wp-json/wp/v2/posts",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "title",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "name": "content",
+              "value": "={{ $json.content }}"
+            },
+            {
+              "name": "featured_media",
+              "value": "={{ $json.featured_media }}"
+            },
+            {
+              "name": "status",
+              "value": "={{ $json.status }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1248,
+        624
+      ],
+      "id": "5e6e3889-7af6-4beb-8d32-db0c91d43b8c",
+      "name": "HTTP Request6"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Your Google Sheets document",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 195936165,
+          "mode": "list",
+          "cachedResultName": "Your worksheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=YOUR_SHEET_GID"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Get row(s) in sheet').item.json.id }}",
+            "is published": "Yes"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "is published",
+              "displayName": "is published",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "موضوع",
+              "displayName": "موضوع",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "مخاطب هدف مقاله",
+              "displayName": "مخاطب هدف مقاله",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "کال تو اکشن",
+              "displayName": "کال تو اکشن",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "رنگ سازمانی",
+              "displayName": "رنگ سازمانی",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "طول محتوا",
+              "displayName": "طول محتوا",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "زبان انتشار",
+              "displayName": "زبان انتشار",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "لحن",
+              "displayName": "لحن",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1488,
+        624
+      ],
+      "id": "f1eb3c3b-4793-4444-8a2e-ee0254c9c57a",
+      "name": "Update row in sheet"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "SEO Strategy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SEO Strategy": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code in JavaScript7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Writer": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Image Prompt Engineer": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Image Prompt Engineer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Image Prompt Engineer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Generate feature image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Generate image 1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Generate image 2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Generate image 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate image 1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate feature image": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate image 2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate image 3": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "SEO Strategy",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Writer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript5": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript6": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript7": {
+      "main": [
+        [
+          {
+            "node": "Writer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "tags": []
+}
